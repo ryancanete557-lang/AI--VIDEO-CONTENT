@@ -45,8 +45,6 @@
       cursor: pointer;
     }
 
-    /* NAVIGATION */
-
     header {
       position: sticky;
       top: 0;
@@ -72,7 +70,8 @@
       letter-spacing: -2px;
     }
 
-    .logo span {
+    .logo span,
+    .footer-logo span {
       color: #7446e8;
     }
 
@@ -108,8 +107,6 @@
       background: transparent;
       font-size: 28px;
     }
-
-    /* HERO */
 
     .hero {
       min-height: 700px;
@@ -186,8 +183,6 @@
       border: 1px solid #dddde5;
       color: #25252b;
     }
-
-    /* GENERATOR CARD */
 
     .generator-card {
       background: white;
@@ -277,8 +272,6 @@
       filter: brightness(1.06);
     }
 
-    /* RESULT */
-
     .result-section {
       display: none;
       margin-top: 25px;
@@ -317,8 +310,6 @@
       color: white;
     }
 
-    /* GENERAL SECTIONS */
-
     section {
       padding: 100px 24px;
     }
@@ -350,13 +341,14 @@
       font-size: 17px;
     }
 
-    /* FEATURES */
-
-    .features {
+    .features,
+    .portfolio {
       background: white;
     }
 
-    .feature-grid {
+    .feature-grid,
+    .portfolio-grid,
+    .blog-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 22px;
@@ -386,11 +378,13 @@
       font-size: 21px;
     }
 
-    .feature-card p {
+    .feature-card p,
+    .project-content p,
+    .blog-card p,
+    .workflow-step p,
+    .about-content p {
       color: #696973;
     }
-
-    /* ABOUT */
 
     .about-grid {
       display: grid;
@@ -421,7 +415,6 @@
     }
 
     .about-content p {
-      color: #62626b;
       font-size: 17px;
       margin-bottom: 18px;
     }
@@ -443,18 +436,6 @@
       margin-right: 10px;
     }
 
-    /* PORTFOLIO */
-
-    .portfolio {
-      background: white;
-    }
-
-    .portfolio-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 22px;
-    }
-
     .project-card {
       overflow: hidden;
       border-radius: 20px;
@@ -468,11 +449,16 @@
       overflow: hidden;
     }
 
-    .project-image img {
+    .project-image img,
+    .project-image video {
       width: 100%;
       height: 100%;
       object-fit: cover;
       display: block;
+    }
+
+    .project-image video {
+      background: #111;
     }
 
     .project-content {
@@ -491,13 +477,6 @@
       margin: 7px 0;
       font-size: 21px;
     }
-
-    .project-content p {
-      color: #6a6a73;
-      font-size: 14px;
-    }
-
-    /* WORKFLOW */
 
     .workflow {
       background: #f0edff;
@@ -532,16 +511,7 @@
     }
 
     .workflow-step p {
-      color: #696973;
       font-size: 14px;
-    }
-
-    /* BLOG */
-
-    .blog-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 22px;
     }
 
     .blog-card {
@@ -560,12 +530,6 @@
       font-size: 22px;
       margin: 10px 0;
     }
-
-    .blog-card p {
-      color: #696973;
-    }
-
-    /* CONTACT */
 
     .contact {
       background: #18181e;
@@ -624,8 +588,6 @@
       font-weight: 900;
     }
 
-    /* FOOTER */
-
     footer {
       background: #111116;
       color: #aaaab4;
@@ -647,12 +609,6 @@
       font-weight: 900;
     }
 
-    .footer-logo span {
-      color: #7446e8;
-    }
-
-    /* TOAST */
-
     .toast {
       position: fixed;
       bottom: 25px;
@@ -672,8 +628,6 @@
       opacity: 1;
       transform: translateY(0);
     }
-
-    /* RESPONSIVE */
 
     @media (max-width: 900px) {
       nav {
@@ -760,8 +714,6 @@
 
 <body>
 
-  <!-- NAVIGATION -->
-
   <header>
     <div class="nav-container">
 
@@ -788,9 +740,6 @@
 
     </div>
   </header>
-
-
-  <!-- HERO -->
 
   <main>
 
@@ -829,9 +778,6 @@
 
         </div>
 
-
-        <!-- GENERATOR -->
-
         <div class="generator-card" id="generator">
 
           <div class="generator-header">
@@ -844,7 +790,6 @@
             </div>
 
           </div>
-
 
           <div class="form-group">
 
@@ -859,7 +804,6 @@
 
           </div>
 
-
           <div class="form-group">
 
             <label for="platform">
@@ -867,31 +811,14 @@
             </label>
 
             <select id="platform">
-
-              <option value="TikTok">
-                TikTok
-              </option>
-
-              <option value="Instagram Reels">
-                Instagram Reels
-              </option>
-
-              <option value="YouTube Shorts">
-                YouTube Shorts
-              </option>
-
-              <option value="YouTube">
-                YouTube
-              </option>
-
-              <option value="Facebook">
-                Facebook
-              </option>
-
+              <option value="TikTok">TikTok</option>
+              <option value="Instagram Reels">Instagram Reels</option>
+              <option value="YouTube Shorts">YouTube Shorts</option>
+              <option value="YouTube">YouTube</option>
+              <option value="Facebook">Facebook</option>
             </select>
 
           </div>
-
 
           <div class="form-group">
 
@@ -900,35 +827,15 @@
             </label>
 
             <select id="style">
-
-              <option value="Professional">
-                Professional
-              </option>
-
-              <option value="Cinematic">
-                Cinematic
-              </option>
-
-              <option value="Energetic">
-                Energetic
-              </option>
-
-              <option value="Educational">
-                Educational
-              </option>
-
-              <option value="Funny">
-                Funny
-              </option>
-
-              <option value="Inspirational">
-                Inspirational
-              </option>
-
+              <option value="Professional">Professional</option>
+              <option value="Cinematic">Cinematic</option>
+              <option value="Energetic">Energetic</option>
+              <option value="Educational">Educational</option>
+              <option value="Funny">Funny</option>
+              <option value="Inspirational">Inspirational</option>
             </select>
 
           </div>
-
 
           <div class="form-group">
 
@@ -937,27 +844,13 @@
             </label>
 
             <select id="duration">
-
-              <option value="15 seconds">
-                15 seconds
-              </option>
-
-              <option value="30 seconds">
-                30 seconds
-              </option>
-
-              <option value="45 seconds">
-                45 seconds
-              </option>
-
-              <option value="60 seconds">
-                60 seconds
-              </option>
-
+              <option value="15 seconds">15 seconds</option>
+              <option value="30 seconds">30 seconds</option>
+              <option value="45 seconds">45 seconds</option>
+              <option value="60 seconds">60 seconds</option>
             </select>
 
           </div>
-
 
           <button
             class="generate-button"
@@ -965,7 +858,6 @@
           >
             ✨ Generate Video Content
           </button>
-
 
           <div
             class="result-section"
@@ -1005,9 +897,6 @@
 
     </section>
 
-
-    <!-- FEATURES -->
-
     <section class="features">
 
       <div class="section-container">
@@ -1028,90 +917,60 @@
 
         </div>
 
-
         <div class="feature-grid">
 
           <div class="feature-card">
-
             <div class="feature-icon">💡</div>
-
             <h3>Video Ideas</h3>
-
             <p>
               Transform a simple topic into creative video concepts
               designed for social media.
             </p>
-
           </div>
 
-
           <div class="feature-card">
-
             <div class="feature-icon">🎬</div>
-
             <h3>Video Scripts</h3>
-
             <p>
               Generate structured scripts with scenes, dialogue,
               narration, and calls to action.
             </p>
-
           </div>
 
-
           <div class="feature-card">
-
             <div class="feature-icon">🚀</div>
-
             <h3>Viral Hooks</h3>
-
             <p>
               Create attention-grabbing opening lines designed to
               keep viewers watching.
             </p>
-
           </div>
 
-
           <div class="feature-card">
-
             <div class="feature-icon">📱</div>
-
             <h3>Social Captions</h3>
-
             <p>
               Generate captions and calls to action for TikTok,
               Instagram, YouTube, and more.
             </p>
-
           </div>
 
-
           <div class="feature-card">
-
             <div class="feature-icon">🎨</div>
-
             <h3>Creative Direction</h3>
-
             <p>
               Develop visual styles, scene ideas, transitions,
               and creative concepts.
             </p>
-
           </div>
 
-
           <div class="feature-card">
-
             <div class="feature-icon">⚡</div>
-
             <h3>Fast Workflow</h3>
-
             <p>
               Move from idea to production-ready content without
               complicated software.
             </p>
-
           </div>
 
         </div>
@@ -1119,9 +978,6 @@
       </div>
 
     </section>
-
-
-    <!-- ABOUT -->
 
     <section id="about">
 
@@ -1138,7 +994,6 @@
             >
 
           </div>
-
 
           <div class="about-content">
 
@@ -1162,14 +1017,11 @@
               production faster and easier.
             </p>
 
-
             <ul class="check-list">
-
               <li>AI-assisted video concepts</li>
               <li>Short-form content strategy</li>
               <li>Video editing and creative direction</li>
               <li>Social media content development</li>
-
             </ul>
 
           </div>
@@ -1179,9 +1031,6 @@
       </div>
 
     </section>
-
-
-    <!-- PORTFOLIO -->
 
     <section class="portfolio" id="portfolio">
 
@@ -1204,16 +1053,51 @@
 
         </div>
 
-
         <div class="portfolio-grid">
 
+          <!-- YOUR VIDEO -->
+
+          <article class="project-card">
+
+            <div class="project-image">
+
+              <video
+                controls
+                playsinline
+                preload="metadata"
+              >
+                <source
+                  src="./A_photorealistic_natural_video_from_20260916231021.mp4"
+                  type="video/mp4"
+                >
+                Your browser does not support the video tag.
+              </video>
+
+            </div>
+
+            <div class="project-content">
+
+              <span>AI Video</span>
+
+              <h3>
+                Photorealistic Video Project
+              </h3>
+
+              <p>
+                A photorealistic AI-generated video created as part
+                of a creative video content project.
+              </p>
+
+            </div>
+
+          </article>
 
           <article class="project-card">
 
             <div class="project-image">
 
               <img
-                src="22.jpg"
+                src="./22.jpg"
                 alt="AI video project"
                 onerror="this.style.display='none'"
               >
@@ -1236,7 +1120,6 @@
             </div>
 
           </article>
-
 
           <article class="project-card">
 
@@ -1274,7 +1157,6 @@
 
           </article>
 
-
           <article class="project-card">
 
             <div class="project-image">
@@ -1311,15 +1193,11 @@
 
           </article>
 
-
         </div>
 
       </div>
 
     </section>
-
-
-    <!-- WORKFLOW -->
 
     <section class="workflow">
 
@@ -1341,88 +1219,47 @@
 
         </div>
 
-
         <div class="workflow-grid">
 
-
           <div class="workflow-step">
-
-            <div class="step-number">
-              1
-            </div>
-
-            <h3>
-              Enter your idea
-            </h3>
-
+            <div class="step-number">1</div>
+            <h3>Enter your idea</h3>
             <p>
               Tell the generator what you want your video to be about.
             </p>
-
           </div>
 
-
           <div class="workflow-step">
-
-            <div class="step-number">
-              2
-            </div>
-
-            <h3>
-              Choose your style
-            </h3>
-
+            <div class="step-number">2</div>
+            <h3>Choose your style</h3>
             <p>
               Select a platform, tone, and video duration.
             </p>
-
           </div>
 
-
           <div class="workflow-step">
-
-            <div class="step-number">
-              3
-            </div>
-
-            <h3>
-              Generate
-            </h3>
-
+            <div class="step-number">3</div>
+            <h3>Generate</h3>
             <p>
               The generator creates a structured content concept
               for your video.
             </p>
-
           </div>
 
-
           <div class="workflow-step">
-
-            <div class="step-number">
-              4
-            </div>
-
-            <h3>
-              Create
-            </h3>
-
+            <div class="step-number">4</div>
+            <h3>Create</h3>
             <p>
               Copy your content and use it as the foundation for
               your production.
             </p>
-
           </div>
-
 
         </div>
 
       </div>
 
     </section>
-
-
-    <!-- BLOG -->
 
     <section id="blog">
 
@@ -1444,9 +1281,7 @@
 
         </div>
 
-
         <div class="blog-grid">
-
 
           <article class="blog-card">
 
@@ -1464,7 +1299,6 @@
             </p>
 
           </article>
-
 
           <article class="blog-card">
 
@@ -1484,7 +1318,6 @@
 
           </article>
 
-
           <article class="blog-card">
 
             <small>
@@ -1502,22 +1335,17 @@
 
           </article>
 
-
         </div>
 
       </div>
 
     </section>
 
-
-    <!-- CONTACT -->
-
     <section class="contact" id="contact">
 
       <div class="section-container">
 
         <div class="contact-grid">
-
 
           <div>
 
@@ -1535,7 +1363,6 @@
             </p>
 
           </div>
-
 
           <form
             class="contact-form"
@@ -1568,7 +1395,6 @@
 
           </form>
 
-
         </div>
 
       </div>
@@ -1576,9 +1402,6 @@
     </section>
 
   </main>
-
-
-  <!-- FOOTER -->
 
   <footer>
 
@@ -1600,9 +1423,6 @@
 
   </footer>
 
-
-  <!-- TOAST -->
-
   <div
     class="toast"
     id="toast"
@@ -1610,12 +1430,7 @@
     Copied!
   </div>
 
-
-  <!-- JAVASCRIPT -->
-
   <script>
-
-    /* MOBILE MENU */
 
     const menuButton = document.getElementById("menuButton");
     const nav = document.getElementById("nav");
@@ -1623,9 +1438,6 @@
     menuButton.addEventListener("click", function () {
       nav.classList.toggle("open");
     });
-
-
-    /* CLOSE MOBILE MENU AFTER CLICK */
 
     document.querySelectorAll("nav a").forEach(function(link) {
 
@@ -1635,14 +1447,8 @@
 
     });
 
-
-    /* YEAR */
-
     document.getElementById("year").textContent =
       new Date().getFullYear();
-
-
-    /* TOAST */
 
     function showToast(message) {
 
@@ -1658,9 +1464,6 @@
 
     }
 
-
-    /* CONTENT GENERATOR */
-
     const generateButton =
       document.getElementById("generateButton");
 
@@ -1669,7 +1472,6 @@
 
     const resultBox =
       document.getElementById("resultBox");
-
 
     generateButton.addEventListener("click", function() {
 
@@ -1685,7 +1487,6 @@
       const duration =
         document.getElementById("duration").value;
 
-
       if (!topic) {
 
         showToast("Please enter a video idea first.");
@@ -1696,13 +1497,10 @@
 
       }
 
-
       generateButton.textContent =
         "Generating...";
 
-
       generateButton.disabled = true;
-
 
       setTimeout(function() {
 
@@ -1783,7 +1581,6 @@ HASHTAGS
 #${platform.replace(/\s+/g, "")}
 `;
 
-
         resultBox.textContent = content;
 
         resultSection.classList.add("show");
@@ -1793,7 +1590,6 @@ HASHTAGS
 
         generateButton.disabled = false;
 
-
         resultSection.scrollIntoView({
           behavior: "smooth",
           block: "nearest"
@@ -1802,9 +1598,6 @@ HASHTAGS
       }, 700);
 
     });
-
-
-    /* COPY RESULT */
 
     document.getElementById("copyButton")
       .addEventListener("click", async function() {
@@ -1824,9 +1617,6 @@ HASHTAGS
         }
 
       });
-
-
-    /* DOWNLOAD RESULT */
 
     document.getElementById("downloadButton")
       .addEventListener("click", function() {
@@ -1858,9 +1648,6 @@ HASHTAGS
 
       });
 
-
-    /* CONTACT FORM */
-
     document.getElementById("contactForm")
       .addEventListener("submit", function(event) {
 
@@ -1875,7 +1662,6 @@ HASHTAGS
         const message =
           document.getElementById("contactMessage").value.trim();
 
-
         if (!name || !email || !message) {
 
           showToast("Please complete all fields.");
@@ -1884,25 +1670,13 @@ HASHTAGS
 
         }
 
-
-        /*
-          This is a front-end contact form.
-
-          It does not send email yet because no email service
-          or backend has been connected.
-        */
-
         showToast(
           "Message form submitted. Email service can be connected next."
         );
 
-
         this.reset();
 
       });
-
-
-    /* ENTER KEY FOR GENERATOR */
 
     document.getElementById("topic")
       .addEventListener("keydown", function(event) {

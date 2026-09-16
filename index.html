@@ -2,857 +2,1140 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Ryan Fernandez | AI Video Content Generator</title>
 <meta name="description" content="AI Video Content Generator by Ryan Fernandez.">
 
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{font-family:Inter,Arial,sans-serif;background:#f7f7fb;color:#17171c;line-height:1.6}
-a{text-decoration:none;color:inherit}
-button,input,textarea,select{font:inherit}
-button{cursor:pointer}
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
 
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  font-family:Inter,Arial,sans-serif;
+  background:#f7f7fb;
+  color:#17171c;
+  line-height:1.6;
+}
+
+a{
+  text-decoration:none;
+  color:inherit;
+}
+
+button,input,textarea,select{
+  font:inherit;
+}
+
+button{
+  cursor:pointer;
+}
+
+/* HEADER */
 header{
-position:sticky;top:0;z-index:1000;
-background:rgba(255,255,255,.94);
-backdrop-filter:blur(15px);
-border-bottom:1px solid #e8e8ee
+  position:sticky;
+  top:0;
+  z-index:1000;
+  background:rgba(255,255,255,.94);
+  backdrop-filter:blur(15px);
+  border-bottom:1px solid #e8e8ee;
 }
+
 .nav-container{
-max-width:1180px;margin:auto;padding:18px 24px;
-display:flex;align-items:center;justify-content:space-between;gap:30px
+  max-width:1180px;
+  margin:auto;
+  padding:18px 24px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:30px;
 }
-.logo{font-size:28px;font-weight:900;letter-spacing:-2px}
-.logo span,.footer-logo span{color:#7446e8}
-nav{display:flex;gap:30px;align-items:center}
-nav a{color:#4f4f58;font-weight:600}
-nav a:hover{color:#7446e8}
+
+.logo{
+  font-size:28px;
+  font-weight:900;
+  letter-spacing:-2px;
+}
+
+.logo span{
+  color:#7446e8;
+}
+
+nav{
+  display:flex;
+  align-items:center;
+  gap:28px;
+}
+
+nav a{
+  color:#4f4f5a;
+  font-weight:600;
+  font-size:14px;
+}
+
+nav a:hover{
+  color:#7446e8;
+}
+
 .nav-button{
-background:#7446e8;color:white;padding:12px 22px;
-border-radius:12px;font-weight:700;border:0;
-box-shadow:0 8px 20px rgba(116,70,232,.25)
+  background:#7446e8;
+  color:white;
+  padding:12px 20px;
+  border-radius:12px;
+  font-weight:700;
+  border:0;
 }
-.menu-button{display:none;border:0;background:none;font-size:28px}
 
+.menu-button{
+  display:none;
+}
+
+/* HERO */
 .hero{
-min-height:700px;padding:70px 24px;
-background:
-radial-gradient(circle at 15% 20%,rgba(116,70,232,.15),transparent 28%),
-radial-gradient(circle at 90% 15%,rgba(75,100,255,.12),transparent 30%),
-#f7f7fb
+  min-height:720px;
+  padding:90px 24px;
+  background:
+    radial-gradient(circle at 80% 20%,rgba(116,70,232,.15),transparent 30%),
+    linear-gradient(135deg,#fafaff,#f1efff);
 }
+
 .hero-container{
-max-width:1180px;margin:auto;
-display:grid;grid-template-columns:1.1fr .9fr;
-align-items:center;gap:55px
+  max-width:1180px;
+  margin:auto;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:65px;
+  align-items:center;
 }
 
-/* HERO PHOTO */
-.hero-left{
-display:flex;align-items:center;gap:28px
+.badge{
+  display:inline-block;
+  padding:8px 14px;
+  background:#ebe4ff;
+  color:#6332d3;
+  border-radius:30px;
+  font-size:12px;
+  font-weight:800;
+  letter-spacing:1px;
+  margin-bottom:22px;
 }
-.hero-photo{
-width:250px;min-width:250px;height:470px;
-border-radius:30px;overflow:hidden;
-background:#eee9ff;
-box-shadow:0 25px 60px rgba(30,20,60,.15)
-}
-.hero-photo img{
-width:100%;height:100%;
-object-fit:cover;object-position:center top;
-display:block
-}
-.hero-text{flex:1}
 
-.eyebrow{
-display:inline-block;padding:8px 14px;border-radius:30px;
-background:#eee9ff;color:#7041df;font-size:14px;
-font-weight:800;margin-bottom:22px
-}
 .hero h1{
-font-size:clamp(42px,5vw,70px);
-line-height:1.02;letter-spacing:-4px;margin-bottom:25px
+  font-size:clamp(48px,6vw,78px);
+  line-height:1;
+  letter-spacing:-4px;
+  margin-bottom:25px;
 }
-.gradient-text{
-background:linear-gradient(90deg,#7446e8,#9a62ff);
--webkit-background-clip:text;background-clip:text;color:transparent
-}
-.hero p{color:#5f5f68;font-size:18px;margin-bottom:30px}
-.hero-actions{display:flex;flex-wrap:wrap;gap:14px}
-.primary-button,.secondary-button{
-border-radius:13px;padding:15px 24px;font-weight:800;border:0
-}
-.primary-button{background:#7446e8;color:white}
-.secondary-button{background:white;border:1px solid #dddde5}
 
+.hero h1 span{
+  color:#7446e8;
+}
+
+.hero p{
+  max-width:600px;
+  font-size:18px;
+  color:#62626d;
+  margin-bottom:32px;
+}
+
+.hero-buttons{
+  display:flex;
+  gap:14px;
+  flex-wrap:wrap;
+}
+
+.primary-button,
+.secondary-button{
+  padding:15px 24px;
+  border-radius:13px;
+  font-weight:800;
+  border:0;
+}
+
+.primary-button{
+  background:#7446e8;
+  color:white;
+}
+
+.secondary-button{
+  background:white;
+  color:#333;
+  border:1px solid #dddde5;
+}
+
+/* HERO IMAGE */
+.hero-photo{
+  background:white;
+  padding:12px;
+  border-radius:26px;
+  box-shadow:0 25px 70px rgba(40,25,80,.14);
+  margin-bottom:20px;
+}
+
+.hero-photo img{
+  width:100%;
+  height:220px;
+  object-fit:cover;
+  object-position:center;
+  border-radius:18px;
+  display:block;
+}
+
+/* GENERATOR */
 .generator-card{
-background:white;border:1px solid #e4e4eb;border-radius:25px;
-padding:28px;box-shadow:0 25px 70px rgba(30,20,60,.1)
+  background:white;
+  border:1px solid #e3e3eb;
+  border-radius:25px;
+  padding:30px;
+  box-shadow:0 25px 70px rgba(40,25,80,.10);
 }
-.generator-header{
-display:flex;justify-content:space-between;align-items:center;
-margin-bottom:25px
+
+.generator-top{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:25px;
 }
-.generator-header h2{font-size:25px}
-.status{display:flex;align-items:center;gap:7px;color:#55555f;font-size:13px}
-.status-dot{width:8px;height:8px;background:#25b86a;border-radius:50%}
-.form-group{margin-bottom:18px}
-.form-group label{display:block;margin-bottom:8px;font-size:14px;font-weight:800}
-.form-group textarea,.form-group select{
-width:100%;border:1px solid #dedee6;border-radius:12px;
-padding:13px 14px;outline:none;background:#fafafd
+
+.generator-top h2{
+  font-size:23px;
 }
-.form-group textarea{min-height:105px;resize:vertical}
+
+.ready{
+  color:#27a56b;
+  font-size:13px;
+  font-weight:700;
+}
+
+.form-group{
+  margin-bottom:18px;
+}
+
+.form-group label{
+  display:block;
+  font-size:13px;
+  font-weight:800;
+  margin-bottom:7px;
+}
+
+.form-group textarea,
+.form-group select,
+.form-group input{
+  width:100%;
+  border:1px solid #dedee7;
+  border-radius:11px;
+  padding:13px;
+  outline:none;
+  background:#fff;
+}
+
+.form-group textarea{
+  min-height:100px;
+  resize:vertical;
+}
+
 .generate-button{
-width:100%;border:0;border-radius:13px;background:#7446e8;
-color:white;padding:16px;font-weight:900;font-size:16px
-}
-.generate-button:hover,.primary-button:hover,.nav-button:hover{filter:brightness(1.06)}
-
-.result-section{display:none;margin-top:25px;padding-top:25px;border-top:1px solid #ededf2}
-.result-section.show{display:block}
-.result-box{
-background:#f7f5ff;border:1px solid #e2dafa;border-radius:15px;
-padding:18px;white-space:pre-wrap;color:#33333b;font-size:14px;
-max-height:400px;overflow-y:auto;margin-top:12px
-}
-.result-actions{display:flex;gap:10px;margin-top:12px}
-.small-button{
-border:0;border-radius:10px;padding:10px 14px;
-font-weight:700;background:#222229;color:white
+  width:100%;
+  padding:16px;
+  border:0;
+  border-radius:12px;
+  background:linear-gradient(90deg,#6234df,#884df5);
+  color:white;
+  font-weight:800;
+  margin-top:5px;
 }
 
-section{padding:100px 24px}
-.section-container{max-width:1180px;margin:auto}
-.section-heading{text-align:center;max-width:700px;margin:0 auto 55px}
+/* SECTIONS */
+section{
+  padding:90px 24px;
+}
+
+.section-container{
+  max-width:1180px;
+  margin:auto;
+}
+
+.section-heading{
+  text-align:center;
+  max-width:700px;
+  margin:0 auto 50px;
+}
+
+.section-heading .small{
+  color:#7446e8;
+  font-weight:800;
+  font-size:13px;
+  letter-spacing:1px;
+}
+
 .section-heading h2{
-font-size:clamp(35px,5vw,52px);
-letter-spacing:-2px;line-height:1.1;margin-bottom:18px
+  font-size:44px;
+  letter-spacing:-2px;
+  margin:10px 0;
 }
-.section-heading p{color:#666670;font-size:17px}
 
-.features,.portfolio{background:white}
-.feature-grid,.portfolio-grid,.blog-grid{
-display:grid;grid-template-columns:repeat(3,1fr);gap:22px
+.section-heading p{
+  color:#666672;
 }
+
+/* FEATURES */
+.features{
+  background:white;
+}
+
+.feature-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:20px;
+}
+
 .feature-card{
-padding:30px;border:1px solid #e6e6ed;
-border-radius:20px;background:white
+  padding:28px;
+  background:#fafafe;
+  border:1px solid #e7e7ef;
+  border-radius:20px;
 }
+
 .feature-icon{
-width:52px;height:52px;border-radius:14px;
-display:grid;place-items:center;background:#eee9ff;
-color:#7446e8;font-size:24px;margin-bottom:20px
+  width:48px;
+  height:48px;
+  border-radius:14px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:#eee8ff;
+  color:#7446e8;
+  font-size:22px;
+  margin-bottom:18px;
 }
-.feature-card h3{margin-bottom:10px;font-size:21px}
-.feature-card p,.project-content p,.blog-card p,.workflow-step p,.about-content p{
-color:#696973
+
+.feature-card h3{
+  margin-bottom:8px;
+}
+
+.feature-card p{
+  color:#696975;
+}
+
+/* ABOUT */
+.about{
+  background:#f4f1ff;
 }
 
 .about-grid{
-display:grid;grid-template-columns:.8fr 1.2fr;
-align-items:center;gap:70px
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:60px;
+  align-items:center;
 }
-.profile-card{
-background:white;padding:20px;border-radius:25px;
-border:1px solid #e5e5ec;box-shadow:0 20px 50px rgba(30,20,60,.08)
+
+.about-image{
+  background:white;
+  padding:12px;
+  border-radius:25px;
+  box-shadow:0 20px 60px rgba(50,30,100,.12);
 }
-.profile-card img{width:100%;display:block;border-radius:18px}
-.about-content h2{
-font-size:50px;line-height:1.1;letter-spacing:-2px;margin-bottom:20px
+
+.about-image img{
+  width:100%;
+  height:500px;
+  object-fit:cover;
+  border-radius:18px;
+  display:block;
 }
-.about-content p{font-size:17px;margin-bottom:18px}
-.check-list{list-style:none;margin-top:25px}
-.check-list li{margin-bottom:13px;font-weight:700}
-.check-list li::before{
-content:"✓";color:#7446e8;font-weight:900;margin-right:10px
+
+.about-text h2{
+  font-size:48px;
+  letter-spacing:-2px;
+  margin:10px 0 20px;
+}
+
+.about-text p{
+  color:#62626d;
+  margin-bottom:18px;
+}
+
+.about-list{
+  list-style:none;
+}
+
+.about-list li{
+  margin:12px 0;
+  font-weight:700;
+}
+
+/* PORTFOLIO */
+.portfolio{
+  background:white;
+}
+
+.project-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:25px;
 }
 
 .project-card{
-overflow:hidden;border-radius:20px;
-border:1px solid #e5e5ec;background:white
+  overflow:hidden;
+  background:#f8f8fc;
+  border:1px solid #e6e6ed;
+  border-radius:22px;
 }
-.project-image{
-height:230px;background:#eee;overflow:hidden
-}
-.project-image img,.project-image video{
-width:100%;height:100%;object-fit:cover;display:block
-}
-.project-image video{background:#111}
-.project-content{padding:22px}
-.project-content span{
-font-size:12px;font-weight:800;color:#7446e8;
-text-transform:uppercase;letter-spacing:1px
-}
-.project-content h3{margin:7px 0;font-size:21px}
 
-.workflow{background:#f0edff}
+.project-media{
+  height:340px;
+  background:#ddd;
+  overflow:hidden;
+}
+
+.project-media img,
+.project-media video{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+
+.project-info{
+  padding:23px;
+}
+
+.project-info h3{
+  font-size:22px;
+  margin-bottom:7px;
+}
+
+.project-info p{
+  color:#696975;
+}
+
+.video-badge{
+  display:inline-block;
+  margin-bottom:10px;
+  padding:6px 10px;
+  background:#7446e8;
+  color:white;
+  border-radius:20px;
+  font-size:11px;
+  font-weight:800;
+}
+
+/* WORKFLOW */
+.workflow{
+  background:#f7f7fb;
+}
+
 .workflow-grid{
-display:grid;grid-template-columns:repeat(4,1fr);gap:18px
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:20px;
 }
-.workflow-step{background:white;padding:28px;border-radius:18px}
-.step-number{
-width:40px;height:40px;border-radius:50%;
-display:grid;place-items:center;background:#7446e8;
-color:white;font-weight:900;margin-bottom:18px
+
+.workflow-card{
+  text-align:center;
+  padding:25px;
 }
-.workflow-step h3{margin-bottom:8px}
+
+.workflow-number{
+  width:55px;
+  height:55px;
+  border-radius:50%;
+  background:#7446e8;
+  color:white;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  margin:0 auto 15px;
+  font-weight:900;
+}
+
+/* BLOG */
+.blog{
+  background:white;
+}
+
+.blog-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:22px;
+}
 
 .blog-card{
-background:white;border:1px solid #e6e6ed;
-border-radius:20px;padding:27px
+  border:1px solid #e6e6ed;
+  border-radius:20px;
+  padding:25px;
 }
-.blog-card small{color:#7446e8;font-weight:800}
-.blog-card h3{font-size:22px;margin:10px 0}
 
-.contact{background:#18181e;color:white}
-.contact-grid{
-display:grid;grid-template-columns:1fr 1fr;
-gap:60px;align-items:start
+.blog-card span{
+  color:#7446e8;
+  font-size:12px;
+  font-weight:800;
 }
-.contact h2{
-font-size:55px;line-height:1.05;
-letter-spacing:-2px;margin-bottom:20px
+
+.blog-card h3{
+  margin:10px 0;
 }
-.contact p{color:#bdbdc6;font-size:17px;max-width:500px}
+
+.blog-card p{
+  color:#696975;
+}
+
+/* CONTACT */
+.contact{
+  background:#17171c;
+  color:white;
+}
+
+.contact-container{
+  max-width:850px;
+  margin:auto;
+  text-align:center;
+}
+
+.contact-container h2{
+  font-size:48px;
+  letter-spacing:-2px;
+  margin-bottom:15px;
+}
+
+.contact-container p{
+  color:#bdbdc7;
+  margin-bottom:30px;
+}
+
 .contact-form{
-background:white;padding:28px;border-radius:20px;color:#17171c
+  display:grid;
+  gap:14px;
+  text-align:left;
 }
-.contact-form input,.contact-form textarea{
-width:100%;padding:14px;margin-bottom:14px;
-border:1px solid #dedee6;border-radius:10px;outline:none
+
+.contact-form input,
+.contact-form textarea{
+  width:100%;
+  padding:15px;
+  border:1px solid #3a3a44;
+  background:#24242b;
+  color:white;
+  border-radius:11px;
 }
-.contact-form textarea{min-height:130px;resize:vertical}
+
+.contact-form textarea{
+  min-height:130px;
+}
+
 .contact-form button{
-width:100%;border:0;border-radius:11px;padding:14px;
-background:#7446e8;color:white;font-weight:900
+  padding:15px;
+  background:#7446e8;
+  color:white;
+  border:0;
+  border-radius:11px;
+  font-weight:800;
 }
 
-footer{background:#111116;color:#aaaab4;padding:35px 24px}
-.footer-container{
-max-width:1180px;margin:auto;display:flex;
-justify-content:space-between;align-items:center;gap:20px
+/* FOOTER */
+footer{
+  background:#111115;
+  color:#aaa;
+  padding:25px;
+  text-align:center;
+  font-size:14px;
 }
-.footer-logo{color:white;font-size:24px;font-weight:900}
 
+/* TOAST */
 .toast{
-position:fixed;bottom:25px;right:25px;background:#18181e;
-color:white;padding:14px 20px;border-radius:12px;
-opacity:0;transform:translateY(15px);
-pointer-events:none;transition:.25s;z-index:5000
+  position:fixed;
+  bottom:25px;
+  right:25px;
+  background:#17171c;
+  color:white;
+  padding:15px 20px;
+  border-radius:12px;
+  display:none;
+  z-index:2000;
 }
-.toast.show{opacity:1;transform:translateY(0)}
 
-@media(max-width:1050px){
-.hero-left{flex-direction:column;align-items:flex-start}
-.hero-photo{width:210px;min-width:210px;height:330px}
+/* MOBILE */
+@media(max-width:850px){
+
+  nav{
+    display:none;
+  }
+
+  .menu-button{
+    display:block;
+    background:none;
+    border:0;
+    font-size:25px;
+  }
+
+  .hero-container,
+  .about-grid{
+    grid-template-columns:1fr;
+  }
+
+  .hero{
+    padding-top:60px;
+  }
+
+  .feature-grid,
+  .blog-grid{
+    grid-template-columns:1fr;
+  }
+
+  .project-grid{
+    grid-template-columns:1fr;
+  }
+
+  .workflow-grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .hero h1{
+    letter-spacing:-2px;
+  }
+
+  .about-image img{
+    height:400px;
+  }
 }
-@media(max-width:900px){
-nav{
-display:none;position:absolute;top:73px;left:0;right:0;
-background:white;padding:20px;flex-direction:column;
-border-bottom:1px solid #eee
-}
-nav.open{display:flex}
-.menu-button{display:block}
-.nav-button{display:none}
-.hero-container,.about-grid,.contact-grid{grid-template-columns:1fr}
-.feature-grid,.portfolio-grid,.blog-grid{grid-template-columns:1fr 1fr}
-.workflow-grid{grid-template-columns:1fr 1fr}
-}
-@media(max-width:600px){
-section{padding:70px 18px}
-.hero{padding:60px 18px}
-.hero-left{align-items:center}
-.hero-photo{width:180px;min-width:180px;height:270px}
-.hero-text{text-align:left}
-.feature-grid,.portfolio-grid,.blog-grid,.workflow-grid{grid-template-columns:1fr}
-.hero h1{letter-spacing:-2px}
-.about-content h2,.contact h2{font-size:40px}
-.footer-container{flex-direction:column;text-align:center}
+
+@media(max-width:500px){
+
+  .nav-container{
+    padding:15px 18px;
+  }
+
+  section{
+    padding:65px 18px;
+  }
+
+  .hero{
+    padding:55px 18px;
+  }
+
+  .generator-card{
+    padding:20px;
+  }
+
+  .workflow-grid{
+    grid-template-columns:1fr;
+  }
+
+  .section-heading h2,
+  .about-text h2,
+  .contact-container h2{
+    font-size:36px;
+  }
 }
 </style>
 </head>
 
 <body>
 
+<!-- HEADER -->
 <header>
-<div class="nav-container">
-<a href="#home" class="logo">RF<span>.</span></a>
+  <div class="nav-container">
+    <a href="#" class="logo">RF<span>.</span></a>
 
-<nav id="nav">
-<a href="#home">Home</a>
-<a href="#about">About</a>
-<a href="#generator">Generator</a>
-<a href="#portfolio">Portfolio</a>
-<a href="#blog">Blog</a>
-<a href="#contact">Contact</a>
-</nav>
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#generator">Generator</a>
+      <a href="#portfolio">Portfolio</a>
+      <a href="#blog">Blog</a>
+      <a href="#contact">Contact</a>
+      <a href="#contact" class="nav-button">Let's Talk</a>
+    </nav>
 
-<a href="#contact" class="nav-button">Let's Talk</a>
-
-<button class="menu-button" id="menuButton" aria-label="Open navigation">☰</button>
-</div>
+    <button class="menu-button" onclick="toggleMenu()">☰</button>
+  </div>
 </header>
 
-<main>
-
+<!-- HERO -->
 <section class="hero" id="home">
-<div class="hero-container">
+  <div class="hero-container">
 
-<div class="hero-left">
+    <div>
+      <div class="badge">AI CONTENT CREATOR</div>
 
-<div class="hero-photo">
-<img src="./22.jpg" alt="Ryan Fernandez">
-</div>
+      <h1>
+        Turn your ideas into
+        <span>video content.</span>
+      </h1>
 
-<div class="hero-text">
+      <p>
+        Create engaging video concepts, hooks, scripts,
+        captions, and social media content with an easy-to-use
+        AI content generation workspace.
+      </p>
 
-<span class="eyebrow">AI CONTENT CREATOR</span>
+      <div class="hero-buttons">
+        <a href="#generator" class="primary-button">Create Content</a>
+        <a href="#portfolio" class="secondary-button">View Projects</a>
+      </div>
+    </div>
 
-<h1>
-Turn your ideas into
-<span class="gradient-text">video content.</span>
-</h1>
+    <div>
 
-<p>
-Create engaging video concepts, hooks, scripts, captions,
-and social media content with an easy-to-use AI content
-generation workspace.
-</p>
+      <!-- YOUR PHOTO -->
+      <div class="hero-photo">
+        <img src="./22.jpg" alt="Ryan Fernandez">
+      </div>
 
-<div class="hero-actions">
-<a href="#generator" class="primary-button">Create Content</a>
-<a href="#portfolio" class="secondary-button">View Projects</a>
-</div>
+      <!-- GENERATOR -->
+      <div class="generator-card" id="generator">
 
-</div>
-</div>
+        <div class="generator-top">
+          <h2>AI Video Generator</h2>
+          <span class="ready">● Ready</span>
+        </div>
 
-<div class="generator-card" id="generator">
+        <div class="form-group">
+          <label>What is your video about?</label>
+          <textarea id="videoTopic"
+            placeholder="Example: A bamboo chip product advertisement..."></textarea>
+        </div>
 
-<div class="generator-header">
-<h2>AI Video Generator</h2>
-<div class="status">
-<span class="status-dot"></span> Ready
-</div>
-</div>
+        <div class="form-group">
+          <label>Platform</label>
+          <select id="platform">
+            <option>TikTok</option>
+            <option>Instagram Reels</option>
+            <option>YouTube Shorts</option>
+            <option>Facebook</option>
+          </select>
+        </div>
 
-<div class="form-group">
-<label for="topic">What is your video about?</label>
-<textarea id="topic" placeholder="Example: A Nike sneaker commercial for young athletes..."></textarea>
-</div>
+        <div class="form-group">
+          <label>Content Style</label>
+          <select id="style">
+            <option>Professional</option>
+            <option>Cinematic</option>
+            <option>Product Advertisement</option>
+            <option>Lifestyle</option>
+            <option>Educational</option>
+          </select>
+        </div>
 
-<div class="form-group">
-<label for="platform">Platform</label>
-<select id="platform">
-<option>TikTok</option>
-<option>Instagram Reels</option>
-<option>YouTube Shorts</option>
-<option>YouTube</option>
-<option>Facebook</option>
-</select>
-</div>
+        <div class="form-group">
+          <label>Video Length</label>
+          <select id="length">
+            <option>15 seconds</option>
+            <option>30 seconds</option>
+            <option>60 seconds</option>
+          </select>
+        </div>
 
-<div class="form-group">
-<label for="style">Content style</label>
-<select id="style">
-<option>Professional</option>
-<option>Cinematic</option>
-<option>Energetic</option>
-<option>Educational</option>
-<option>Funny</option>
-<option>Inspirational</option>
-</select>
-</div>
+        <button class="generate-button" onclick="generateContent()">
+          ✨ Generate Video Content
+        </button>
 
-<div class="form-group">
-<label for="duration">Video length</label>
-<select id="duration">
-<option>15 seconds</option>
-<option>30 seconds</option>
-<option>45 seconds</option>
-<option>60 seconds</option>
-</select>
-</div>
+      </div>
+    </div>
 
-<button class="generate-button" id="generateButton">
-✨ Generate Video Content
-</button>
-
-<div class="result-section" id="resultSection">
-<strong>Generated Content</strong>
-<div class="result-box" id="resultBox"></div>
-
-<div class="result-actions">
-<button class="small-button" id="copyButton">Copy</button>
-<button class="small-button" id="downloadButton">Download</button>
-</div>
-</div>
-
-</div>
-</div>
+  </div>
 </section>
 
+<!-- FEATURES -->
 <section class="features">
-<div class="section-container">
+  <div class="section-container">
 
-<div class="section-heading">
-<span class="eyebrow">WHAT YOU CAN CREATE</span>
-<h2>Everything you need for short-form content</h2>
-<p>Build a complete video concept from one simple idea.</p>
-</div>
+    <div class="section-heading">
+      <div class="small">WHAT YOU CAN CREATE</div>
+      <h2>Everything you need for better content.</h2>
+      <p>
+        Turn simple ideas into complete content concepts
+        ready for production.
+      </p>
+    </div>
 
-<div class="feature-grid">
+    <div class="feature-grid">
 
-<div class="feature-card">
-<div class="feature-icon">💡</div>
-<h3>Video Ideas</h3>
-<p>Transform a simple topic into creative video concepts designed for social media.</p>
-</div>
+      <div class="feature-card">
+        <div class="feature-icon">💡</div>
+        <h3>Video Ideas</h3>
+        <p>Generate creative concepts for your next video.</p>
+      </div>
 
-<div class="feature-card">
-<div class="feature-icon">🎬</div>
-<h3>Video Scripts</h3>
-<p>Generate structured scripts with scenes, dialogue, narration, and calls to action.</p>
-</div>
+      <div class="feature-card">
+        <div class="feature-icon">📝</div>
+        <h3>Scripts</h3>
+        <p>Create structured scripts for engaging videos.</p>
+      </div>
 
-<div class="feature-card">
-<div class="feature-icon">🚀</div>
-<h3>Viral Hooks</h3>
-<p>Create attention-grabbing opening lines designed to keep viewers watching.</p>
-</div>
+      <div class="feature-card">
+        <div class="feature-icon">🚀</div>
+        <h3>Hooks</h3>
+        <p>Start your videos with attention-grabbing hooks.</p>
+      </div>
 
-<div class="feature-card">
-<div class="feature-icon">📱</div>
-<h3>Social Captions</h3>
-<p>Generate captions and calls to action for TikTok, Instagram, YouTube, and more.</p>
-</div>
+      <div class="feature-card">
+        <div class="feature-icon">📱</div>
+        <h3>Captions</h3>
+        <p>Generate social captions for your content.</p>
+      </div>
 
-<div class="feature-card">
-<div class="feature-icon">🎨</div>
-<h3>Creative Direction</h3>
-<p>Develop visual styles, scene ideas, transitions, and creative concepts.</p>
-</div>
+      <div class="feature-card">
+        <div class="feature-icon">🎨</div>
+        <h3>Creative Direction</h3>
+        <p>Develop visual direction for your projects.</p>
+      </div>
 
-<div class="feature-card">
-<div class="feature-icon">⚡</div>
-<h3>Fast Workflow</h3>
-<p>Move from idea to production-ready content without complicated software.</p>
-</div>
+      <div class="feature-card">
+        <div class="feature-icon">⚡</div>
+        <h3>Fast & Easy</h3>
+        <p>Build content ideas quickly from one workspace.</p>
+      </div>
 
-</div>
-</div>
+    </div>
+  </div>
 </section>
 
-<section id="about">
-<div class="section-container">
-<div class="about-grid">
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="section-container about-grid">
 
-<div class="profile-card">
-<img src="./22.jpg" alt="Ryan Fernandez">
-</div>
+    <div class="about-image">
+      <img src="./22.jpg" alt="Ryan Fernandez">
+    </div>
 
-<div class="about-content">
-<span class="eyebrow">ABOUT</span>
-<h2>Creative ideas powered by AI.</h2>
+    <div class="about-text">
+      <div class="badge">ABOUT THE CREATOR</div>
 
-<p>
-I'm Ryan Fernandez, an AI content creator and video editor
-focused on creating engaging digital experiences and short-form video content.
-</p>
+      <h2>Creating content with AI.</h2>
 
-<p>
-This website combines creative direction, content strategy,
-and AI-assisted workflows to make video production faster and easier.
-</p>
+      <p>
+        Welcome to my AI-powered creative workspace.
+        I use artificial intelligence and modern content
+        tools to develop video concepts and creative projects.
+      </p>
 
-<ul class="check-list">
-<li>AI-assisted video concepts</li>
-<li>Short-form content strategy</li>
-<li>Video editing and creative direction</li>
-<li>Social media content development</li>
-</ul>
-</div>
+      <p>
+        From ideas and hooks to scripts, captions and
+        visual concepts, this platform brings the creative
+        process into one simple workflow.
+      </p>
 
-</div>
-</div>
+      <ul class="about-list">
+        <li>✓ AI-assisted content creation</li>
+        <li>✓ Video concepts and scripts</li>
+        <li>✓ Social media content</li>
+        <li>✓ Creative video projects</li>
+      </ul>
+    </div>
+
+  </div>
 </section>
 
+<!-- PORTFOLIO -->
 <section class="portfolio" id="portfolio">
-<div class="section-container">
+  <div class="section-container">
 
-<div class="section-heading">
-<span class="eyebrow">PORTFOLIO</span>
-<h2>Selected creative projects</h2>
-<p>Examples of AI-assisted video concepts and creative content projects.</p>
-</div>
+    <div class="section-heading">
+      <div class="small">MY WORK</div>
+      <h2>Creative projects.</h2>
+      <p>
+        A collection of AI-generated video and creative content.
+      </p>
+    </div>
 
-<div class="portfolio-grid">
+    <div class="project-grid">
 
-<!-- YOUR VIDEO -->
-<article class="project-card">
+      <!-- NEW BAMBOO CHIP VIDEO -->
+      <div class="project-card">
 
-<div class="project-image">
-<video controls playsinline preload="metadata">
-<source src="./A_photorealistic_natural_video_from_20260916231021.mp4" type="video/mp4">
-Your browser does not support the video tag.
-</video>
-</div>
+        <div class="project-media">
+          <video controls playsinline preload="metadata">
+            <source
+              src="./Pouring_bamboo_chips_into_bowl_20260916234749.mp4"
+              type="video/mp4">
+            Your browser does not support video.
+          </video>
+        </div>
 
-<div class="project-content">
-<span>AI Video</span>
-<h3>Photorealistic Video Project</h3>
-<p>A photorealistic AI-generated video created as part of a creative video content project.</p>
-</div>
+        <div class="project-info">
+          <span class="video-badge">AI VIDEO</span>
+          <h3>Bamboo Chip Product Video</h3>
+          <p>
+            A cinematic product video featuring crispy bamboo chips.
+          </p>
+        </div>
 
-</article>
+      </div>
 
-<article class="project-card">
+      <!-- SECOND VIDEO -->
+      <div class="project-card">
 
-<div class="project-image">
-<img src="./22.jpg" alt="AI video project">
-</div>
+        <div class="project-media">
+          <video controls playsinline preload="metadata">
+            <source
+              src="./A_photorealistic_natural_video_from_20260916231021.mp4"
+              type="video/mp4">
+            Your browser does not support video.
+          </video>
+        </div>
 
-<div class="project-content">
-<span>Commercial</span>
-<h3>Sneaker Campaign</h3>
-<p>A high-energy concept for a modern sneaker advertising campaign.</p>
-</div>
+        <div class="project-info">
+          <span class="video-badge">AI VIDEO</span>
+          <h3>Photorealistic AI Video</h3>
+          <p>
+            A natural photorealistic AI-generated video project.
+          </p>
+        </div>
 
-</article>
+      </div>
 
-<article class="project-card">
+      <!-- PHOTO PROJECT -->
+      <div class="project-card">
 
-<div class="project-image">
-<div style="width:100%;height:100%;display:grid;place-items:center;background:linear-gradient(135deg,#17171e,#7446e8);color:white;font-size:42px;font-weight:900">
-AI
-</div>
-</div>
+        <div class="project-media">
+          <img src="./22.jpg" alt="Creative project">
+        </div>
 
-<div class="project-content">
-<span>Social Video</span>
-<h3>Short-Form Campaign</h3>
-<p>A collection of short-form video concepts created for social media audiences.</p>
-</div>
+        <div class="project-info">
+          <span class="video-badge">CREATIVE</span>
+          <h3>Creator Portrait</h3>
+          <p>
+            Personal creative branding and visual content.
+          </p>
+        </div>
 
-</article>
+      </div>
 
-<article class="project-card">
-
-<div class="project-image">
-<div style="width:100%;height:100%;display:grid;place-items:center;background:linear-gradient(135deg,#111,#444);color:white;font-size:42px;font-weight:900">
-🎬
-</div>
-</div>
-
-<div class="project-content">
-<span>Video Editing</span>
-<h3>Creative Video Edit</h3>
-<p>Visual storytelling combining editing, motion, music, and AI-assisted creative direction.</p>
-</div>
-
-</article>
-
-</div>
-</div>
+    </div>
+  </div>
 </section>
 
+<!-- WORKFLOW -->
 <section class="workflow">
-<div class="section-container">
+  <div class="section-container">
 
-<div class="section-heading">
-<span class="eyebrow">SIMPLE WORKFLOW</span>
-<h2>From idea to video concept</h2>
-<p>Four simple steps to start creating.</p>
-</div>
+    <div class="section-heading">
+      <div class="small">WORKFLOW</div>
+      <h2>From idea to content.</h2>
+      <p>A simple creative process.</p>
+    </div>
 
-<div class="workflow-grid">
+    <div class="workflow-grid">
 
-<div class="workflow-step">
-<div class="step-number">1</div>
-<h3>Enter your idea</h3>
-<p>Tell the generator what you want your video to be about.</p>
-</div>
+      <div class="workflow-card">
+        <div class="workflow-number">1</div>
+        <h3>Idea</h3>
+        <p>Start with your concept.</p>
+      </div>
 
-<div class="workflow-step">
-<div class="step-number">2</div>
-<h3>Choose your style</h3>
-<p>Select a platform, tone, and video duration.</p>
-</div>
+      <div class="workflow-card">
+        <div class="workflow-number">2</div>
+        <h3>Script</h3>
+        <p>Develop the story.</p>
+      </div>
 
-<div class="workflow-step">
-<div class="step-number">3</div>
-<h3>Generate</h3>
-<p>The generator creates a structured content concept for your video.</p>
-</div>
+      <div class="workflow-card">
+        <div class="workflow-number">3</div>
+        <h3>Create</h3>
+        <p>Build the visual content.</p>
+      </div>
 
-<div class="workflow-step">
-<div class="step-number">4</div>
-<h3>Create</h3>
-<p>Copy your content and use it as the foundation for your production.</p>
-</div>
+      <div class="workflow-card">
+        <div class="workflow-number">4</div>
+        <h3>Publish</h3>
+        <p>Share your finished content.</p>
+      </div>
 
-</div>
-</div>
+    </div>
+  </div>
 </section>
 
-<section id="blog">
-<div class="section-container">
+<!-- BLOG -->
+<section class="blog" id="blog">
+  <div class="section-container">
 
-<div class="section-heading">
-<span class="eyebrow">BLOG</span>
-<h2>Content creation insights</h2>
-<p>Ideas and strategies for better video content.</p>
-</div>
+    <div class="section-heading">
+      <div class="small">CONTENT INSIGHTS</div>
+      <h2>Ideas for creators.</h2>
+      <p>Simple thoughts about AI and video creation.</p>
+    </div>
 
-<div class="blog-grid">
+    <div class="blog-grid">
 
-<article class="blog-card">
-<small>VIDEO CONTENT</small>
-<h3>How to build a strong video hook</h3>
-<p>The first few seconds can determine whether a viewer keeps watching. Start with a clear reason to pay attention.</p>
-</article>
+      <article class="blog-card">
+        <span>AI CONTENT</span>
+        <h3>How AI can speed up video creation</h3>
+        <p>
+          Use AI to move from an idea to a structured
+          content concept faster.
+        </p>
+      </article>
 
-<article class="blog-card">
-<small>AI CONTENT</small>
-<h3>Using AI in your creative workflow</h3>
-<p>AI can help with brainstorming, scripting, variations, and creative exploration while keeping human direction at the center.</p>
-</article>
+      <article class="blog-card">
+        <span>VIDEO</span>
+        <h3>Creating stronger video hooks</h3>
+        <p>
+          A strong opening can help your audience
+          understand your video immediately.
+        </p>
+      </article>
 
-<article class="blog-card">
-<small>SOCIAL MEDIA</small>
-<h3>Creating better short-form videos</h3>
-<p>Strong storytelling, clear visuals, fast pacing, and useful information can help make short videos more engaging.</p>
-</article>
+      <article class="blog-card">
+        <span>CREATIVE</span>
+        <h3>Building a consistent content workflow</h3>
+        <p>
+          Organize ideas, scripts, visuals and publishing
+          into one repeatable process.
+        </p>
+      </article>
 
-</div>
-</div>
+    </div>
+  </div>
 </section>
 
+<!-- CONTACT -->
 <section class="contact" id="contact">
-<div class="section-container">
+  <div class="contact-container">
 
-<div class="contact-grid">
+    <div class="badge">LET'S CONNECT</div>
 
-<div>
-<span class="eyebrow">CONTACT</span>
-<h2>Let's create something great.</h2>
-<p>
-Have a video idea, creative project, or content campaign?
-Send a message and let's start the conversation.
-</p>
-</div>
+    <h2>Have a creative project?</h2>
 
-<form class="contact-form" id="contactForm">
+    <p>
+      Send a message and let's talk about your next content idea.
+    </p>
 
-<input type="text" id="contactName" placeholder="Your name" required>
-<input type="email" id="contactEmail" placeholder="Your email" required>
-<textarea id="contactMessage" placeholder="Tell me about your project..." required></textarea>
+    <form class="contact-form" onsubmit="sendMessage(event)">
 
-<button type="submit">Send Message</button>
+      <input
+        type="text"
+        id="name"
+        placeholder="Your name"
+        required>
 
-</form>
+      <input
+        type="email"
+        id="email"
+        placeholder="Your email"
+        required>
 
-</div>
-</div>
+      <textarea
+        id="message"
+        placeholder="Tell me about your project..."
+        required></textarea>
+
+      <button type="submit">
+        Send Message
+      </button>
+
+    </form>
+
+  </div>
 </section>
 
-</main>
-
+<!-- FOOTER -->
 <footer>
-<div class="footer-container">
-
-<div class="footer-logo">RF<span>.</span></div>
-
-<div>
-© <span id="year"></span> Ryan Fernandez. All rights reserved.
-</div>
-
-<div>AI Content Creator</div>
-
-</div>
+  © <span id="year"></span> Ryan Fernandez. AI Video Content Creator.
 </footer>
 
-<div class="toast" id="toast">Copied!</div>
+<div class="toast" id="toast"></div>
 
 <script>
 
-const menuButton=document.getElementById("menuButton");
-const nav=document.getElementById("nav");
-
-menuButton.addEventListener("click",()=>{
-nav.classList.toggle("open");
-});
-
-document.querySelectorAll("nav a").forEach(link=>{
-link.addEventListener("click",()=>{
-nav.classList.remove("open");
-});
-});
-
-document.getElementById("year").textContent=new Date().getFullYear();
+document.getElementById("year").textContent =
+  new Date().getFullYear();
 
 function showToast(message){
-const toast=document.getElementById("toast");
-toast.textContent=message;
-toast.classList.add("show");
-setTimeout(()=>toast.classList.remove("show"),2200);
+
+  const toast = document.getElementById("toast");
+
+  toast.textContent = message;
+  toast.style.display = "block";
+
+  setTimeout(function(){
+    toast.style.display = "none";
+  },3000);
 }
 
-const generateButton=document.getElementById("generateButton");
-const resultSection=document.getElementById("resultSection");
-const resultBox=document.getElementById("resultBox");
+function generateContent(){
 
-generateButton.addEventListener("click",()=>{
+  const topic =
+    document.getElementById("videoTopic").value.trim();
 
-const topic=document.getElementById("topic").value.trim();
-const platform=document.getElementById("platform").value;
-const style=document.getElementById("style").value;
-const duration=document.getElementById("duration").value;
+  const platform =
+    document.getElementById("platform").value;
 
-if(!topic){
-showToast("Please enter a video idea first.");
-document.getElementById("topic").focus();
-return;
+  const style =
+    document.getElementById("style").value;
+
+  const length =
+    document.getElementById("length").value;
+
+  if(!topic){
+
+    showToast("Please enter your video idea first.");
+    return;
+
+  }
+
+  showToast("Creating your " + style + " content...");
+
+  setTimeout(function(){
+
+    alert(
+      "AI VIDEO CONTENT\n\n" +
+      "Topic: " + topic + "\n" +
+      "Platform: " + platform + "\n" +
+      "Style: " + style + "\n" +
+      "Length: " + length + "\n\n" +
+      "Your content concept is ready!"
+    );
+
+  },1200);
+
 }
 
-generateButton.textContent="Generating...";
-generateButton.disabled=true;
+function sendMessage(event){
 
-setTimeout(()=>{
+  event.preventDefault();
 
-const content=`VIDEO CONTENT PLAN
+  const name =
+    document.getElementById("name").value;
 
-Topic:
-${topic}
+  showToast("Thanks, " + name + "! Your message is ready.");
 
-Platform:
-${platform}
+  event.target.reset();
 
-Style:
-${style}
-
-Duration:
-${duration}
-
-HOOK
-
-"Stop scrolling — you need to see this."
-
-OPENING SCENE
-
-Start with a visually interesting shot related to:
-
-${topic}
-
-Use quick movement, strong framing, and an immediate visual reason for the viewer to continue watching.
-
-MAIN MESSAGE
-
-Introduce the topic clearly and explain why it matters.
-
-Keep the pacing fast and remove unnecessary information.
-
-SCENE 2
-
-Show the main subject from a different angle.
-
-Add text on screen highlighting the most important point.
-
-SCENE 3
-
-Show the key benefit, transformation, or result.
-
-Use close-up shots and supporting visuals.
-
-CALL TO ACTION
-
-"Follow for more content and let me know what you think."
-
-CAPTION
-
-${topic}
-
-A quick ${style.toLowerCase()} video concept created for ${platform}.
-
-Save this idea and share it with someone who should see it.
-
-HASHTAGS
-
-#AIContent
-#VideoContent
-#ContentCreator
-#VideoMarketing
-#ShortFormVideo
-#${platform.replace(/\s+/g,"")}
-`;
-
-resultBox.textContent=content;
-resultSection.classList.add("show");
-generateButton.textContent="✨ Generate Video Content";
-generateButton.disabled=false;
-
-resultSection.scrollIntoView({
-behavior:"smooth",
-block:"nearest"
-});
-
-},700);
-
-});
-
-document.getElementById("copyButton").addEventListener("click",async()=>{
-try{
-await navigator.clipboard.writeText(resultBox.textContent);
-showToast("Content copied!");
-}catch{
-showToast("Copy failed.");
-}
-});
-
-document.getElementById("downloadButton").addEventListener("click",()=>{
-
-const blob=new Blob(
-[resultBox.textContent],
-{type:"text/plain;charset=utf-8"}
-);
-
-const url=URL.createObjectURL(blob);
-const link=document.createElement("a");
-
-link.href=url;
-link.download="ai-video-content.txt";
-
-document.body.appendChild(link);
-link.click();
-document.body.removeChild(link);
-
-URL.revokeObjectURL(url);
-
-showToast("Content downloaded!");
-
-});
-
-document.getElementById("contactForm").addEventListener("submit",event=>{
-
-event.preventDefault();
-
-showToast("Message form submitted. Email service can be connected next.");
-
-event.target.reset();
-
-});
-
-document.getElementById("topic").addEventListener("keydown",event=>{
-
-if(event.ctrlKey&&event.key==="Enter"){
-generateButton.click();
 }
 
-});
+function toggleMenu(){
+
+  const nav =
+    document.querySelector("nav");
+
+  if(nav.style.display === "flex"){
+
+    nav.style.display = "none";
+
+  }else{
+
+    nav.style.display = "flex";
+    nav.style.flexDirection = "column";
+    nav.style.position = "absolute";
+    nav.style.top = "70px";
+    nav.style.right = "20px";
+    nav.style.background = "white";
+    nav.style.padding = "20px";
+    nav.style.borderRadius = "15px";
+    nav.style.boxShadow =
+      "0 20px 50px rgba(0,0,0,.12)";
+
+  }
+
+}
 
 </script>
 

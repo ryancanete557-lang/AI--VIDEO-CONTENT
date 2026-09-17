@@ -1,136 +1,750 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Ryan Fernandez | AI Video Content</title>
+
+<style>
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    background:#f7f7fb;
+    color:#17171c;
+    line-height:1.6;
+}
+
+a{
+    text-decoration:none;
+    color:inherit;
+}
+
+.container{
+    width:min(1150px,92%);
+    margin:auto;
+}
+
+img,video{
+    width:100%;
+    display:block;
+}
+
+/* NAV */
+nav{
+    position:sticky;
+    top:0;
+    z-index:1000;
+    background:rgba(255,255,255,.97);
+    border-bottom:1px solid #e5e5ec;
+}
+
+.nav-inner{
+    min-height:72px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
+
+.logo{
+    font-size:23px;
+    font-weight:800;
+}
+
+.logo span{
+    color:#704cff;
+}
+
+.nav-links{
+    display:flex;
+    gap:25px;
+    font-size:14px;
+    font-weight:700;
+}
+
+.nav-links a:hover{
+    color:#704cff;
+}
+
+/* HERO */
+.hero{
+    padding:90px 0;
+    background:linear-gradient(135deg,#f8f7ff,#eeeeff);
+}
+
+.hero-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:65px;
+    align-items:center;
+}
+
+.badge{
+    display:inline-block;
+    background:#ece6ff;
+    color:#6845ff;
+    padding:8px 14px;
+    border-radius:30px;
+    font-size:12px;
+    font-weight:800;
+    margin-bottom:20px;
+}
+
+.hero h1{
+    font-size:clamp(45px,6vw,75px);
+    line-height:1.02;
+    letter-spacing:-3px;
+    margin-bottom:25px;
+}
+
+.hero h1 span{
+    color:#704cff;
+}
+
+.hero p{
+    color:#62626e;
+    font-size:17px;
+    max-width:600px;
+    margin-bottom:30px;
+}
+
+.buttons{
+    display:flex;
+    gap:12px;
+    flex-wrap:wrap;
+}
+
+.btn{
+    display:inline-block;
+    padding:14px 22px;
+    border-radius:10px;
+    border:1px solid #dcdce5;
+    background:white;
+    font-weight:700;
+}
+
+.btn-primary{
+    background:#704cff;
+    color:white;
+    border-color:#704cff;
+}
+
+.hero-photo{
+    border-radius:24px;
+    overflow:hidden;
+    background:white;
+    box-shadow:0 25px 60px rgba(40,25,90,.15);
+}
+
+.hero-photo img{
+    aspect-ratio:1/1;
+    object-fit:cover;
+}
+
+/* GENERAL */
+section{
+    padding:90px 0;
+}
+
+.section-title{
+    text-align:center;
+    margin-bottom:50px;
+}
+
+.section-title h2{
+    font-size:43px;
+    line-height:1.1;
+    margin-bottom:12px;
+}
+
+.section-title p{
+    color:#696974;
+}
+
+/* PORTFOLIO */
+.portfolio{
+    background:#f7f7fb;
+}
+
+.video-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:28px;
+}
+
+.video-card{
+    background:white;
+    border:1px solid #e2e2e9;
+    border-radius:20px;
+    overflow:hidden;
+    box-shadow:0 12px 35px rgba(20,20,50,.07);
+}
+
+.video-card video{
+    width:100%;
+    aspect-ratio:16/9;
+    object-fit:cover;
+    background:#111;
+}
+
+.video-info{
+    padding:23px;
+}
+
+.video-number{
+    color:#704cff;
+    font-size:12px;
+    font-weight:800;
+    text-transform:uppercase;
+    margin-bottom:7px;
+}
+
+.video-info h3{
+    font-size:21px;
+    margin-bottom:8px;
+}
+
+.video-info p{
+    color:#696974;
+    font-size:14px;
+}
+
+/* ABOUT */
+.about{
+    background:#111117;
+    color:white;
+}
+
+.about-grid{
+    display:grid;
+    grid-template-columns:350px 1fr;
+    gap:60px;
+    align-items:center;
+}
+
+.about-photo{
+    border-radius:20px;
+    overflow:hidden;
+}
+
+.about-photo img{
+    aspect-ratio:1/1;
+    object-fit:cover;
+}
+
+.about h2{
+    font-size:45px;
+    line-height:1.1;
+    margin-bottom:20px;
+}
+
+.about p{
+    color:#c7c7d0;
+    margin-bottom:18px;
+}
+
+/* SERVICES */
+.services{
+    background:white;
+}
+
+.service-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:22px;
+}
+
+.service{
+    padding:30px;
+    border:1px solid #e4e4eb;
+    border-radius:18px;
+    background:white;
+}
+
+.service h3{
+    margin-bottom:10px;
+}
+
+.service p{
+    color:#696974;
+}
+
+/* CONTACT */
+.contact{
+    background:#eeeaff;
+}
+
+.contact-box{
+    text-align:center;
+    background:white;
+    padding:50px 25px;
+    border-radius:22px;
+}
+
+.contact-box h2{
+    font-size:42px;
+    margin-bottom:12px;
+}
+
+.contact-box p{
+    color:#696974;
+    margin-bottom:25px;
+}
+
+/* FOOTER */
+footer{
+    background:#111117;
+    color:#aaaab5;
+    padding:30px 0;
+    text-align:center;
+}
+
+/* MOBILE */
+@media(max-width:800px){
+
+    .nav-links{
+        display:none;
+    }
+
+    .hero-grid,
+    .about-grid{
+        grid-template-columns:1fr;
+    }
+
+    .hero{
+        padding:65px 0;
+    }
+
+    .video-grid,
+    .service-grid{
+        grid-template-columns:1fr;
+    }
+
+    .about-photo{
+        max-width:350px;
+        margin:auto;
+    }
+}
+
+@media(max-width:500px){
+
+    section{
+        padding:65px 0;
+    }
+
+    .hero h1{
+        font-size:48px;
+    }
+
+    .section-title h2{
+        font-size:34px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAVIGATION -->
+<nav>
+<div class="container nav-inner">
+
+<div class="logo">
+Ryan <span>Fernandez</span>
+</div>
+
+<div class="nav-links">
+<a href="#home">Home</a>
+<a href="#portfolio">Portfolio</a>
+<a href="#about">About</a>
+<a href="#services">Services</a>
+<a href="#contact">Contact</a>
+</div>
+
+</div>
+</nav>
+
+
+<!-- HOME -->
+<section class="hero" id="home">
+
+<div class="container hero-grid">
+
+<div>
+
+<span class="badge">AI VIDEO CONTENT CREATOR</span>
+
+<h1>
+Turn ideas into
+<span>video content.</span>
+</h1>
+
+<p>
+I create realistic AI-generated videos, promotional
+content, product videos, business videos and
+home-improvement content.
+</p>
+
+<div class="buttons">
+<a href="#portfolio" class="btn btn-primary">
+View My Videos
+</a>
+
+<a href="#contact" class="btn">
+Contact Me
+</a>
+</div>
+
+</div>
+
+<div class="hero-photo">
+<img src="./22.jpg" alt="Ryan Fernandez">
+</div>
+
+</div>
+
+</section>
+
+
 <!-- PORTFOLIO -->
 <section class="portfolio" id="portfolio">
 
 <div class="container">
 
 <div class="section-title">
-<h2>Video Portfolio</h2>
+
+<h2>AI Video Portfolio</h2>
+
 <p>
-Explore my AI-generated video projects.
+Realistic AI-generated videos and creative projects.
 </p>
+
 </div>
+
 
 <div class="video-grid">
 
-<!-- VIDEO 1 -->
+
+<!-- 1 -->
 <div class="video-card">
+
 <video controls playsinline preload="metadata">
 <source
 src="./A_photorealistic_natural_video_from_20260916231021.mp4"
 type="video/mp4">
-Your browser does not support video playback.
 </video>
 
 <div class="video-info">
-<div class="video-number">Project 01</div>
-<h3>Photorealistic Natural Video</h3>
+
+<div class="video-number">
+Project 01
+</div>
+
+<h3>
+Photorealistic Natural Video
+</h3>
+
 <p>
-A realistic AI-generated visual project focused on
-natural cinematic movement.
+A realistic cinematic AI video created with
+natural movement and photorealistic visuals.
 </p>
+
 </div>
 </div>
 
 
-<!-- VIDEO 2 -->
+<!-- 2 -->
 <div class="video-card">
+
 <video controls playsinline preload="metadata">
 <source
 src="./Motorcycle_accelerates_on_open_road_20260917005331.mp4"
 type="video/mp4">
-Your browser does not support video playback.
 </video>
 
 <div class="video-info">
-<div class="video-number">Project 02</div>
-<h3>Motorcycle Accelerates on Open Road</h3>
+
+<div class="video-number">
+Project 02
+</div>
+
+<h3>
+Motorcycle Accelerates on Open Road
+</h3>
+
 <p>
-A cinematic motorcycle video showing acceleration
-on an open road.
+A cinematic motorcycle sequence showing
+realistic acceleration on an open road.
 </p>
+
 </div>
 </div>
 
 
-<!-- VIDEO 3 -->
+<!-- 3 -->
 <div class="video-card">
+
 <video controls playsinline preload="metadata">
 <source
 src="./Pouring_bamboo_chips_into_bowl_20260916234749.mp4"
 type="video/mp4">
-Your browser does not support video playback.
 </video>
 
 <div class="video-info">
-<div class="video-number">Project 03</div>
-<h3>Bamboo Chips Product Video</h3>
+
+<div class="video-number">
+Project 03
+</div>
+
+<h3>
+Bamboo Chips Product Video
+</h3>
+
 <p>
-A product-focused AI video featuring bamboo chips
-being poured into a bowl.
+A realistic product-focused AI video featuring
+bamboo chips being poured into a bowl.
 </p>
+
 </div>
 </div>
 
 
-<!-- VIDEO 4 -->
+<!-- 4 -->
 <div class="video-card">
+
 <video controls playsinline preload="metadata">
 <source
 src="./on_this_coke_video_20260917215535.mp4"
 type="video/mp4">
-Your browser does not support video playback.
 </video>
 
 <div class="video-info">
-<div class="video-number">Project 04</div>
-<h3>Coca-Cola Product Video</h3>
+
+<div class="video-number">
+Project 04
+</div>
+
+<h3>
+Coca-Cola Product Video
+</h3>
+
 <p>
-A realistic commercial-style product video created
-for social media content.
+A commercial-style product video designed
+for social media advertising.
 </p>
+
 </div>
 </div>
 
 
-<!-- VIDEO 5 -->
+<!-- 5 -->
 <div class="video-card">
+
 <video controls playsinline preload="metadata">
 <source
 src="./with_business_meeting_20260917221054.mp4"
 type="video/mp4">
-Your browser does not support video playback.
 </video>
 
 <div class="video-info">
-<div class="video-number">Project 05</div>
-<h3>Business Meeting Video</h3>
+
+<div class="video-number">
+Project 05
+</div>
+
+<h3>
+Business Meeting Video
+</h3>
+
 <p>
-A professional corporate video featuring a modern
-business meeting environment.
+A professional corporate video showing a
+modern business meeting environment.
 </p>
+
 </div>
 </div>
 
 
-<!-- VIDEO 6 - HOME TOUR -->
+<!-- 6 -->
 <div class="video-card">
+
 <video controls playsinline preload="metadata">
 <source
 src="./Realistic_home_tour_video_prompt_20260917224739.mp4"
 type="video/mp4">
-Your browser does not support video playback.
 </video>
 
 <div class="video-info">
-<div class="video-number">Project 06</div>
-<h3>Realistic Home Tour</h3>
+
+<div class="video-number">
+Project 06
+</div>
+
+<h3>
+Realistic Home Tour
+</h3>
+
 <p>
-A hyperrealistic home-improvement video featuring
+A realistic home-improvement video featuring
 kitchens, bathrooms, renovations and roofing.
 </p>
+
 </div>
 </div>
+
 
 </div>
 </div>
 </section>
+
+
+<!-- ABOUT -->
+<section class="about" id="about">
+
+<div class="container about-grid">
+
+<div class="about-photo">
+
+<img src="./22.jpg" alt="Ryan Fernandez">
+
+</div>
+
+<div>
+
+<h2>
+AI Video Creator
+</h2>
+
+<p>
+I create AI-powered visual content for products,
+businesses, social media and promotional campaigns.
+</p>
+
+<p>
+My portfolio includes product advertisements,
+motorcycle videos, corporate content and
+realistic home-improvement videos.
+</p>
+
+<a href="#portfolio" class="btn btn-primary">
+View Portfolio
+</a>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- SERVICES -->
+<section class="services" id="services">
+
+<div class="container">
+
+<div class="section-title">
+
+<h2>What I Create</h2>
+
+<p>
+AI video content for brands, businesses and social media.
+</p>
+
+</div>
+
+
+<div class="service-grid">
+
+<div class="service">
+
+<h3>AI Video Ads</h3>
+
+<p>
+Hyperrealistic promotional videos designed
+for social media advertising.
+</p>
+
+</div>
+
+
+<div class="service">
+
+<h3>Product Videos</h3>
+
+<p>
+Cinematic product demonstrations and
+commercial-style videos.
+</p>
+
+</div>
+
+
+<div class="service">
+
+<h3>Home Improvement</h3>
+
+<p>
+Realistic kitchens, bathrooms, renovations,
+roofing and home-tour content.
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+
+<div class="container">
+
+<div class="contact-box">
+
+<h2>
+Let's Create Something
+</h2>
+
+<p>
+Interested in an AI video project?
+Get in touch with me.
+</p>
+
+<a
+class="btn btn-primary"
+href="mailto:ryanfernandez@example.com">
+Contact Me
+</a>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- FOOTER -->
+<footer>
+
+<div class="container">
+
+© 2026 Ryan Fernandez | AI Video Content
+
+</div>
+
+</footer>
+
+</body>
+</html>

@@ -1,506 +1,619 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ryan Fernandez | AI Video Content</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Ryan Fernandez — AI Video Creator, AI Ad Creative Specialist and Short-Form Video Editor.">
+  <title>Ryan Fernandez | AI Video Creator & Editor</title>
 
-<style>
-*{
-  box-sizing:border-box;
-  margin:0;
-  padding:0;
-}
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-html{
-  scroll-behavior:smooth;
-}
+  <style>
+    :root {
+      --bg: #09090f;
+      --panel: #12121c;
+      --purple: #a78bfa;
+      --white: #f7f5ff;
+      --muted: #a5a3b5;
+      --border: rgba(255,255,255,.10);
+    }
 
-body{
-  font-family:Arial,Helvetica,sans-serif;
-  background:#0b0b0f;
-  color:#f5f5f5;
-  line-height:1.6;
-}
+    * { box-sizing: border-box; margin: 0; padding: 0; }
 
-a{
-  color:inherit;
-  text-decoration:none;
-}
+    html { scroll-behavior: smooth; }
 
-nav{
-  position:sticky;
-  top:0;
-  z-index:1000;
-  background:rgba(11,11,15,.95);
-  border-bottom:1px solid #292933;
-  padding:18px 6%;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-}
+    body {
+      background: var(--bg);
+      color: var(--white);
+      font-family: 'DM Sans', sans-serif;
+      line-height: 1.7;
+    }
 
-.logo{
-  font-size:20px;
-  font-weight:800;
-}
+    a { color: inherit; text-decoration: none; }
+    button, a { -webkit-tap-highlight-color: transparent; }
 
-.nav-links{
-  display:flex;
-  gap:25px;
-}
+    .container { width: min(1120px, 90%); margin: auto; }
 
-.nav-links a{
-  color:#ccc;
-  font-size:14px;
-}
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(9,9,15,.90);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+    }
 
-.nav-links a:hover{
-  color:#fff;
-}
+    .nav-inner {
+      min-height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
 
-.hero{
-  min-height:90vh;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  padding:70px 6%;
-  background:linear-gradient(135deg,#11111a,#08080b);
-}
+    .logo {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 25px;
+      font-weight: 700;
+      letter-spacing: -1px;
+    }
 
-.hero-content{
-  max-width:1100px;
-  width:100%;
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:60px;
-  align-items:center;
-}
+    .logo span { color: var(--purple); }
 
-.hero-image img{
-  width:100%;
-  max-width:450px;
-  display:block;
-  margin:auto;
-  border-radius:24px;
-  border:1px solid #333;
-  box-shadow:0 25px 80px rgba(0,0,0,.5);
-}
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      color: var(--muted);
+      font-size: 14px;
+    }
 
-.hero h1{
-  font-size:clamp(42px,6vw,76px);
-  line-height:1.05;
-  margin-bottom:20px;
-}
+    .nav-links a:hover { color: var(--purple); }
 
-.hero h1 span{
-  color:#8b5cf6;
-}
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 12px 20px;
+      border: 1px solid var(--border);
+      border-radius: 9px;
+      font-weight: 600;
+      font-size: 14px;
+      transition: .2s;
+      cursor: pointer;
+    }
 
-.hero p{
-  color:#b8b8c5;
-  font-size:18px;
-  max-width:600px;
-  margin-bottom:30px;
-}
+    .button.primary {
+      background: var(--purple);
+      color: #171024;
+      border-color: var(--purple);
+    }
 
-.btn{
-  display:inline-block;
-  padding:14px 24px;
-  background:#8b5cf6;
-  border-radius:10px;
-  font-weight:700;
-  margin-right:10px;
-}
+    .button:hover { transform: translateY(-2px); opacity: .9; }
 
-.btn:hover{
-  background:#7044d8;
-}
+    .hero {
+      padding: 115px 0 95px;
+      position: relative;
+      overflow: hidden;
+    }
 
-.btn.secondary{
-  background:transparent;
-  border:1px solid #555;
-}
+    .hero::before {
+      content: "";
+      position: absolute;
+      width: 430px;
+      height: 430px;
+      top: 20px;
+      right: -100px;
+      background: #7545e5;
+      filter: blur(180px);
+      opacity: .19;
+      pointer-events: none;
+    }
 
-section{
-  padding:90px 6%;
-}
+    .eyebrow {
+      color: var(--purple);
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      font-size: 12px;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
 
-.container{
-  max-width:1200px;
-  margin:auto;
-}
+    h1, h2, h3 {
+      font-family: 'Space Grotesk', sans-serif;
+      line-height: 1.15;
+    }
 
-.section-title{
-  font-size:42px;
-  margin-bottom:15px;
-}
+    h1 {
+      max-width: 850px;
+      font-size: clamp(43px, 7vw, 76px);
+      letter-spacing: -3px;
+    }
 
-.section-subtitle{
-  color:#999;
-  margin-bottom:45px;
-}
+    h1 span {
+      color: var(--purple);
+    }
 
-.portfolio-grid{
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:28px;
-}
+    .hero-text {
+      color: var(--muted);
+      max-width: 650px;
+      margin: 25px 0 30px;
+      font-size: 17px;
+    }
 
-.video-card{
-  background:#15151c;
-  border:1px solid #292933;
-  border-radius:18px;
-  overflow:hidden;
-  transition:.3s;
-}
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; }
 
-.video-card:hover{
-  transform:translateY(-5px);
-  border-color:#8b5cf6;
-}
+    .availability {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      color: var(--muted);
+      font-size: 13px;
+      margin-top: 38px;
+    }
 
-.video-card video{
-  width:100%;
-  display:block;
-  background:#000;
-  aspect-ratio:16/9;
-}
+    .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #67e8a5;
+      box-shadow: 0 0 12px #67e8a5;
+    }
 
-.video-info{
-  padding:22px;
-}
+    section { padding: 85px 0; }
 
-.video-number{
-  color:#8b5cf6;
-  font-size:13px;
-  font-weight:700;
-  margin-bottom:6px;
-}
+    .section-label {
+      color: var(--purple);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
 
-.video-info h3{
-  font-size:22px;
-  margin-bottom:8px;
-}
+    .section-title {
+      font-size: clamp(31px, 5vw, 46px);
+      letter-spacing: -1.5px;
+      margin-bottom: 18px;
+    }
 
-.video-info p{
-  color:#999;
-  font-size:14px;
-}
+    .section-desc {
+      color: var(--muted);
+      max-width: 650px;
+      margin-bottom: 38px;
+    }
 
-.about{
-  background:#101016;
-}
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 50px;
+      align-items: start;
+    }
 
-.about-grid{
-  display:grid;
-  grid-template-columns:280px 1fr;
-  gap:50px;
-  align-items:center;
-}
+    .about-copy p { color: var(--muted); margin-bottom: 18px; }
 
-.about img{
-  width:100%;
-  border-radius:20px;
-  border:1px solid #333;
-}
+    .skill-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 24px;
+    }
 
-.about p{
-  color:#bbb;
-  margin-bottom:18px;
-  font-size:17px;
-}
+    .skill {
+      padding: 8px 13px;
+      border: 1px solid var(--border);
+      border-radius: 7px;
+      background: var(--panel);
+      font-size: 12px;
+      color: #ded8f5;
+    }
 
-.services-grid{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:22px;
-}
+    .info-card, .service-card, .project-card, .step {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+    }
 
-.service{
-  background:#15151c;
-  border:1px solid #292933;
-  padding:30px;
-  border-radius:18px;
-}
+    .info-card { padding: 28px; }
+    .info-card h3 { margin-bottom: 20px; font-size: 21px; }
 
-.service h3{
-  margin-bottom:10px;
-  font-size:20px;
-}
+    .info-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 13px;
+    }
 
-.service p{
-  color:#999;
-}
+    .info-row:last-child { border: 0; }
+    .info-row span:first-child { color: var(--muted); }
+    .info-row span:last-child { text-align: right; }
 
-.contact{
-  text-align:center;
-  background:linear-gradient(135deg,#151020,#0b0b0f);
-}
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0,1fr));
+      gap: 22px;
+    }
 
-.contact p{
-  color:#aaa;
-  margin:15px auto 30px;
-}
+    .project-card { overflow: hidden; transition: .25s; }
+    .project-card:hover { transform: translateY(-5px); border-color: #8b6ae6; }
 
-footer{
-  text-align:center;
-  padding:30px;
-  border-top:1px solid #292933;
-  color:#777;
-  font-size:14px;
-}
+    .project-image {
+      position: relative;
+      aspect-ratio: 16 / 9;
+      background: #211936;
+      overflow: hidden;
+    }
 
-@media(max-width:800px){
-  .hero-content{
-    grid-template-columns:1fr;
-    text-align:center;
-  }
+    .project-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: .4s;
+    }
 
-  .hero p{
-    margin-left:auto;
-    margin-right:auto;
-  }
+    .project-card:hover .project-image img { transform: scale(1.04); }
 
-  .portfolio-grid{
-    grid-template-columns:1fr;
-  }
+    .project-number {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      background: rgba(9,9,15,.82);
+      padding: 5px 10px;
+      border-radius: 6px;
+      font-size: 11px;
+    }
 
-  .about-grid{
-    grid-template-columns:1fr;
-  }
+    .project-content { padding: 22px; }
+    .project-content h3 { font-size: 21px; margin-bottom: 10px; }
+    .project-content p { color: var(--muted); font-size: 14px; }
 
-  .about img{
-    max-width:280px;
-    margin:auto;
-  }
+    .tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
 
-  .services-grid{
-    grid-template-columns:1fr;
-  }
+    .tag {
+      color: var(--purple);
+      background: rgba(167,139,250,.09);
+      border-radius: 5px;
+      padding: 4px 8px;
+      font-size: 11px;
+    }
 
-  .nav-links{
-    gap:12px;
-  }
-}
-</style>
+    .services {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0,1fr));
+      gap: 18px;
+    }
+
+    .service-card { padding: 26px; }
+    .service-icon { font-size: 28px; margin-bottom: 17px; }
+    .service-card h3 { font-size: 19px; margin-bottom: 12px; }
+    .service-card p { color: var(--muted); font-size: 14px; }
+
+    .workflow {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0,1fr));
+      gap: 15px;
+    }
+
+    .step { padding: 23px; }
+    .step-num { color: var(--purple); font-size: 13px; margin-bottom: 22px; }
+    .step h3 { font-size: 17px; margin-bottom: 10px; }
+    .step p { color: var(--muted); font-size: 13px; }
+
+    .contact-box {
+      text-align: center;
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 65px 25px;
+      background: radial-gradient(ellipse at top, #292044 0%, var(--panel) 65%);
+    }
+
+    .contact-box .section-desc { margin: 18px auto 28px; }
+
+    footer {
+      padding: 27px 0;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+
+    @media (max-width: 760px) {
+      .nav-inner { padding: 15px 0; flex-wrap: wrap; }
+      .nav-links { order: 3; width: 100%; justify-content: space-between; gap: 10px; font-size: 12px; }
+      .nav-inner > .button { padding: 9px 12px; }
+      .hero { padding: 80px 0 65px; }
+      h1 { letter-spacing: -2px; }
+      section { padding: 65px 0; }
+      .about-grid, .projects { grid-template-columns: 1fr; }
+      .services { grid-template-columns: repeat(2, minmax(0,1fr)); }
+      .workflow { grid-template-columns: repeat(2, minmax(0,1fr)); }
+    }
+
+    @media (max-width: 460px) {
+      .services, .workflow { grid-template-columns: 1fr; }
+      .hero-text { font-size: 15px; }
+      .info-row { font-size: 12px; }
+    }
+  </style>
 </head>
 
 <body>
 
-<nav>
-  <div class="logo">Ryan Fernandez</div>
+  <nav>
+    <div class="container nav-inner">
+      <a class="logo" href="#home">RF<span>.</span></a>
 
-  <div class="nav-links">
-    <a href="#portfolio">Portfolio</a>
-    <a href="#about">About</a>
-    <a href="#services">Services</a>
-    <a href="#contact">Contact</a>
-  </div>
-</nav>
+      <div class="nav-links">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#work">Projects</a>
+        <a href="#services">Services</a>
+        <a href="#contact">Contact</a>
+      </div>
 
-<section class="hero">
-  <div class="hero-content">
-
-    <div class="hero-text">
-      <h1>AI Video <span>Content</span> Creator</h1>
-
-      <p>
-        I create realistic AI-generated videos, product advertisements,
-        promotional content, and visual storytelling for brands and businesses.
-      </p>
-
-      <a href="#portfolio" class="btn">View My Work</a>
-      <a href="#contact" class="btn secondary">Contact Me</a>
+      <a class="button primary" href="#contact">Let's Talk ↗</a>
     </div>
+  </nav>
 
-    <div class="hero-image">
-      <img src="./22.jpg" alt="Ryan Fernandez">
+  <main>
+    <header class="hero" id="home">
+      <div class="container">
+        <p class="eyebrow">AI Video Creator · Video Editor</p>
+
+        <h1>Ideas into videos.<br>
+          <span>Stories into impact.</span>
+        </h1>
+
+        <p class="hero-text">
+          Hi, I'm Ryan Fernandez. I create AI-powered videos, short-form
+          content, product commercials, and advertising creatives designed
+          to capture attention and bring ideas to life.
+        </p>
+
+        <div class="hero-actions">
+          <a class="button primary" href="#work">Explore My Work ↗</a>
+          <a class="button" href="#contact">Hire Me</a>
+        </div>
+
+        <div class="availability">
+          <span class="dot"></span>
+          Open to remote freelance opportunities
+        </div>
+      </div>
+    </header>
+
+    <section id="about">
+      <div class="container">
+        <div class="about-grid">
+          <div class="about-copy">
+            <p class="section-label">A little about me</p>
+            <h2 class="section-title">Creative thinking.<br>AI-powered production.</h2>
+
+            <p>
+              I'm an AI content creator and video editor focused on turning
+              concepts, scripts, and product ideas into engaging visual
+              content for brands and digital audiences.
+            </p>
+
+            <p>
+              My creative workflow combines AI-generated visuals,
+              storytelling, voiceovers, music, sound design, captions,
+              and editing to build compelling video experiences.
+            </p>
+
+            <div class="skill-list">
+              <span class="skill">AI Video Generation</span>
+              <span class="skill">Product Ads</span>
+              <span class="skill">UGC-Style Creatives</span>
+              <span class="skill">Short-Form Editing</span>
+              <span class="skill">AI Voiceovers</span>
+              <span class="skill">Storytelling</span>
+              <span class="skill">Sound Design</span>
+              <span class="skill">Social Media Content</span>
+            </div>
+          </div>
+
+          <div class="info-card">
+            <h3>Quick Overview</h3>
+            <div class="info-row"><span>Name</span><span>Ryan Fernandez</span></div>
+            <div class="info-row"><span>Role</span><span>AI Video Creator</span></div>
+            <div class="info-row"><span>Specialty</span><span>Video Ads & Content</span></div>
+            <div class="info-row"><span>Work Type</span><span>Remote / Freelance</span></div>
+            <div class="info-row"><span>Focus</span><span>Creative Video Production</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="work">
+      <div class="container">
+        <p class="section-label">Selected work</p>
+        <h2 class="section-title">Projects & creative concepts</h2>
+        <p class="section-desc">
+          A selection of AI video concepts, commercial ideas, and visual
+          storytelling projects. Replace these sample images with your
+          own project thumbnails as your portfolio grows.
+        </p>
+
+        <div class="projects">
+          <article class="project-card">
+            <div class="project-image">
+              <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=1000&q=85"
+                   alt="Athletic sneaker commercial concept" loading="lazy">
+              <span class="project-number">PROJECT 01</span>
+            </div>
+            <div class="project-content">
+              <h3>Sneaker Commercial</h3>
+              <p>A dynamic sports product-ad concept built around bold visuals, energetic pacing, and a strong commercial style.</p>
+              <div class="tags"><span class="tag">Product Ad</span><span class="tag">AI Video</span><span class="tag">Sports</span></div>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div class="project-image">
+              <img src="https://images.unsplash.com/photo-1556229010-6c3f2c9ca5f8?auto=format&fit=crop&w=1000&q=85"
+                   alt="Skincare product photography concept" loading="lazy">
+              <span class="project-number">PROJECT 02</span>
+            </div>
+            <div class="project-content">
+              <h3>Skincare Ad Concept</h3>
+              <p>A beauty-focused creative concept featuring clean product imagery and a story designed for social advertising.</p>
+              <div class="tags"><span class="tag">Beauty</span><span class="tag">Storytelling</span><span class="tag">Social Ads</span></div>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div class="project-image">
+              <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1000&q=85"
+                   alt="Modern interior design video concept" loading="lazy">
+              <span class="project-number">PROJECT 03</span>
+            </div>
+            <div class="project-content">
+              <h3>Real Estate Visual Story</h3>
+              <p>A modern home-tour concept using cinematic framing, interior details, and a clean visual presentation.</p>
+              <div class="tags"><span class="tag">Lifestyle</span><span class="tag">Cinematic</span><span class="tag">AI Visuals</span></div>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div class="project-image">
+              <img src="https://images.unsplash.com/photo-1547887538-e3a2f32cb1cc?auto=format&fit=crop&w=1000&q=85"
+                   alt="Luxury beauty and fragrance product concept" loading="lazy">
+              <span class="project-number">PROJECT 04</span>
+            </div>
+            <div class="project-content">
+              <h3>Premium Product Creative</h3>
+              <p>A polished product-visual concept exploring lighting, composition, mood, and premium brand presentation.</p>
+              <div class="tags"><span class="tag">Product Video</span><span class="tag">Creative Direction</span></div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="services">
+      <div class="container">
+        <p class="section-label">What I do</p>
+        <h2 class="section-title">Creative services</h2>
+        <p class="section-desc">
+          Flexible video production support for brands, agencies, and
+          creators looking for fresh content.
+        </p>
+
+        <div class="services">
+          <article class="service-card">
+            <div class="service-icon">🎬</div>
+            <h3>AI Video Creation</h3>
+            <p>Turn prompts, concepts, and scripts into AI-generated video scenes and visual stories.</p>
+          </article>
+
+          <article class="service-card">
+            <div class="service-icon">🛍️</div>
+            <h3>Product Commercials</h3>
+            <p>Create visual concepts and product-focused videos for e-commerce and social campaigns.</p>
+          </article>
+
+          <article class="service-card">
+            <div class="service-icon">📱</div>
+            <h3>Short-Form Content</h3>
+            <p>Edit vertical videos for TikTok, Instagram Reels, YouTube Shorts, and other platforms.</p>
+          </article>
+
+          <article class="service-card">
+            <div class="service-icon">🎙️</div>
+            <h3>AI Voiceovers</h3>
+            <p>Combine narration, music, captions, and sound effects to create a cohesive video experience.</p>
+          </article>
+
+          <article class="service-card">
+            <div class="service-icon">✨</div>
+            <h3>UGC-Style Ad Concepts</h3>
+            <p>Develop creator-inspired advertising concepts with hooks, demonstrations, and clear messaging.</p>
+          </article>
+
+          <article class="service-card">
+            <div class="service-icon">✂️</div>
+            <h3>Video Editing</h3>
+            <p>Refine pacing, transitions, typography, sound design, and visual flow for a polished final edit.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="process">
+      <div class="container">
+        <p class="section-label">My workflow</p>
+        <h2 class="section-title">From idea to final video</h2>
+        <p class="section-desc">A clear process helps turn creative briefs into consistent video deliverables.</p>
+
+        <div class="workflow">
+          <article class="step">
+            <p class="step-num">STEP 01</p>
+            <h3>Understand</h3>
+            <p>Review the brief, target audience, goals, and visual references.</p>
+          </article>
+          <article class="step">
+            <p class="step-num">STEP 02</p>
+            <h3>Plan</h3>
+            <p>Develop the script, hook, storyboard, and scene concepts.</p>
+          </article>
+          <article class="step">
+            <p class="step-num">STEP 03</p>
+            <h3>Create & Edit</h3>
+            <p>Generate visuals, assemble scenes, and refine audio and pacing.</p>
+          </article>
+          <article class="step">
+            <p class="step-num">STEP 04</p>
+            <h3>Deliver</h3>
+            <p>Review the final cut and prepare the requested video format.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <div class="contact-box">
+          <p class="section-label">Let's work together</p>
+          <h2 class="section-title">Have a video project in mind?</h2>
+          <p class="section-desc">
+            I'm interested in connecting with brands, agencies, and clients
+            who need creative AI video production or editing support.
+          </p>
+
+          <a class="button primary"
+             href="mailto:YOUR_EMAIL@example.com?subject=Video%20Project%20Inquiry">
+            Contact Me ↗
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <a class="logo" href="#home">RF<span>.</span></a>
+      <p>© <span id="year"></span> Ryan Fernandez. All rights reserved.</p>
+      <a href="#home">Back to top ↑</a>
     </div>
+  </footer>
 
-  </div>
-</section>
-
-<section id="portfolio">
-  <div class="container">
-
-    <h2 class="section-title">Featured Video Work</h2>
-
-    <p class="section-subtitle">
-      A selection of AI-generated video projects and commercial content.
-    </p>
-
-    <div class="portfolio-grid">
-
-      <div class="video-card">
-        <video controls preload="metadata" playsinline>
-          <source src="./A_photorealistic_natural_video_from_20260916231021.mp4" type="video/mp4">
-        </video>
-        <div class="video-info">
-          <div class="video-number">PROJECT 01</div>
-          <h3>Photorealistic Natural Video</h3>
-          <p>AI-generated realistic cinematic video content.</p>
-        </div>
-      </div>
-
-      <div class="video-card">
-        <video controls preload="metadata" playsinline>
-          <source src="./Motorcycle_accelerates_on_open_road_20260917005331.mp4" type="video/mp4">
-        </video>
-        <div class="video-info">
-          <div class="video-number">PROJECT 02</div>
-          <h3>Motorcycle Advertisement</h3>
-          <p>Cinematic AI-generated automotive promotional content.</p>
-        </div>
-      </div>
-
-      <div class="video-card">
-        <video controls preload="metadata" playsinline>
-          <source src="./Pouring_bamboo_chips_into_bowl_20260916234749.mp4" type="video/mp4">
-        </video>
-        <div class="video-info">
-          <div class="video-number">PROJECT 03</div>
-          <h3>Bamboo Chips Product Video</h3>
-          <p>AI product-focused commercial video.</p>
-        </div>
-      </div>
-
-      <div class="video-card">
-        <video controls preload="metadata" playsinline>
-          <source src="./on_this_coke_video_20260917215535.mp4" type="video/mp4">
-        </video>
-        <div class="video-info">
-          <div class="video-number">PROJECT 04</div>
-          <h3>Coca-Cola Product Video</h3>
-          <p>AI-generated beverage advertising concept.</p>
-        </div>
-      </div>
-
-      <div class="video-card">
-        <video controls preload="metadata" playsinline>
-          <source src="./with_business_meeting_20260917221054.mp4" type="video/mp4">
-        </video>
-        <div class="video-info">
-          <div class="video-number">PROJECT 05</div>
-          <h3>Business Meeting Video</h3>
-          <p>Photorealistic corporate and business content.</p>
-        </div>
-      </div>
-
-      <div class="video-card">
-        <video controls preload="metadata" playsinline>
-          <source src="./Realistic_home_tour_video_prompt_20260917224739.mp4" type="video/mp4">
-        </video>
-        <div class="video-info">
-          <div class="video-number">PROJECT 06</div>
-          <h3>Realistic Home Tour</h3>
-          <p>AI-generated home improvement and property content.</p>
-        </div>
-      </div>
-
-      <div class="video-card">
-        <video controls preload="metadata" playsinline>
-          <source src="./Woman_using_facial_roller_20260918220302.mp4" type="video/mp4">
-        </video>
-        <div class="video-info">
-          <div class="video-number">PROJECT 07</div>
-          <h3>Facial Roller Skincare Video</h3>
-          <p>AI-generated skincare and beauty product content.</p>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<section id="about" class="about">
-  <div class="container">
-
-    <h2 class="section-title">About Me</h2>
-
-    <div class="about-grid">
-
-      <img src="./22.jpg" alt="Ryan Fernandez">
-
-      <div>
-        <p>
-          I'm Ryan Fernandez, an AI video content creator focused on
-          producing realistic, engaging, and commercial-ready visual content.
-        </p>
-
-        <p>
-          I create AI-generated product videos, advertisements, business
-          content, home improvement visuals, and social media creatives.
-        </p>
-
-        <p>
-          My goal is to combine realistic AI visuals with strong storytelling
-          and editing to create content that captures attention.
-        </p>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<section id="services">
-  <div class="container">
-
-    <h2 class="section-title">Services</h2>
-
-    <p class="section-subtitle">
-      AI-powered video content for brands, products, and businesses.
-    </p>
-
-    <div class="services-grid">
-
-      <div class="service">
-        <h3>AI Video Ads</h3>
-        <p>
-          Short-form promotional videos designed for social media,
-          advertising, and brand campaigns.
-        </p>
-      </div>
-
-      <div class="service">
-        <h3>Product Videos</h3>
-        <p>
-          Realistic AI product demonstrations and commercial-style
-          promotional videos.
-        </p>
-      </div>
-
-      <div class="service">
-        <h3>Home Improvement</h3>
-        <p>
-          Realistic visual content for kitchens, bathrooms, renovations,
-          roofing, and home improvement businesses.
-        </p>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<section id="contact" class="contact">
-  <div class="container">
-
-    <h2 class="section-title">Let's Work Together</h2>
-
-    <p>
-      Interested in AI video content for your brand or business?
-    </p>
-
-    <a href="mailto:ryanfernandez@example.com" class="btn">
-      Contact Me
-    </a>
-
-  </div>
-</section>
-
-<footer>
-  © 2026 Ryan Fernandez. AI Video Content Creator.
-</footer>
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
 
 </body>
 </html>

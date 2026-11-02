@@ -1,0 +1,46 @@
+/* Ryan Fernandez | Visual enhancements – scoped to the current site. */
+:root { --motion-glow-a: rgba(165,138,255,.28); --motion-glow-b: rgba(92,190,255,.20); }
+.hero { overflow: clip; }
+.hero-grid > .profile {
+  --mouse-x: 0deg; --mouse-y: 0deg; --scroll-y: 0px;
+  position: relative; isolation: isolate;
+  transform-style: preserve-3d;
+  transform: perspective(950px) translate3d(0,var(--scroll-y),0) rotateX(var(--mouse-y)) rotateY(var(--mouse-x));
+  transition: transform 180ms ease-out, border-color .3s ease, box-shadow .3s ease;
+  border-color: rgba(165,138,255,.4);
+  box-shadow: 0 20px 60px rgba(0,0,0,.35),0 0 28px var(--motion-glow-a);
+  will-change: transform;
+}
+.hero-grid > .profile::before {
+  content:""; position:absolute; inset:-5px; border-radius:24px; z-index:-1;
+  background: linear-gradient(140deg,#a58aff,#70caff 55%,#a58aff);
+  opacity:.52; filter:blur(14px); pointer-events:none;
+  transition: opacity .3s ease, filter .3s ease;
+}
+.hero-grid > .profile::after {
+  content:""; position:absolute; inset:12px; border-radius:12px; pointer-events:none;
+  background:linear-gradient(125deg,rgba(255,255,255,.16),transparent 30%,transparent 75%,rgba(165,138,255,.08));
+}
+.hero-grid > .profile img { transform: translateZ(18px); animation: rfBreathe 6.8s ease-in-out infinite alternate; }
+@keyframes rfBreathe { from { filter: brightness(1) saturate(1); } to { filter: brightness(1.06) saturate(1.08); } }
+@media(hover:hover) and (pointer:fine){
+  .hero-grid > .profile:hover { border-color:rgba(112,202,255,.75); box-shadow:0 30px 70px rgba(0,0,0,.4),0 0 48px var(--motion-glow-b); }
+  .hero-grid > .profile:hover::before { opacity:.8; filter:blur(18px); }
+  .project { transition: transform .32s ease, border-color .32s ease, box-shadow .32s ease; }
+  .project:hover { transform:translateY(-6px); box-shadow:0 20px 45px rgba(0,0,0,.25); }
+}
+/* Only reveal elements once the JavaScript observer has registered. */
+.js-motion .motion-reveal { opacity:0; transform:translateY(22px); transition:opacity .7s ease,transform .7s cubic-bezier(.2,.75,.25,1); }
+.js-motion .motion-reveal.is-visible { opacity:1; transform:translateY(0); }
+.hero .eyebrow, .hero h1, .hero .intro, .hero-actions { animation:rfIntro .75s both; }
+.hero h1 { animation-delay:.10s; }
+.hero .intro { animation-delay:.2s; }
+.hero-actions { animation-delay:.3s; }
+@keyframes rfIntro { from{ opacity:0; transform:translateY(14px); } to { opacity:1; transform:translateY(0); } }
+@media(max-width:760px){ .hero-grid > .profile { margin-inline:auto; width:100%; max-width:380px; } }
+@media(prefers-reduced-motion:reduce){
+  .hero-grid > .profile { transform:none !important; transition:none; will-change:auto; }
+  .hero-grid > .profile img, .hero .eyebrow, .hero h1, .hero .intro, .hero-actions {animation:none!important;}
+  .js-motion .motion-reveal {opacity:1;transform:none;transition:none;}
+  .project {transition:none!important;}
+}

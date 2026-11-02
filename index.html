@@ -259,9 +259,34 @@
       nav .button { display: none; }
       .hero { padding: 60px 0; }
     }
+
+  /* Portrait motion v2: scoped; preserves the original hero grid and sizing. */
+  .hero-grid > .profile {
+    position:relative;
+    isolation:isolate;
+    transform-origin:center center;
+    transform-style:preserve-3d;
+    backface-visibility:hidden;
+    box-shadow: 0 17px 44px rgba(0,0,0,.3), 0 0 28px rgba(161,126,255,.42), 0 0 48px rgba(98,177,255,.15);
+    border-color:rgba(161,126,255,.6);
+    transition:box-shadow .35s ease, border-color .35s ease;
+    will-change:transform;
+  }
+  .hero-grid > .profile::before {
+    content:""; position:absolute; inset:-5px; z-index:-1; pointer-events:none;
+    border-radius:24px; filter:blur(13px); opacity:.6;
+    background:linear-gradient(135deg,#a58aff,#70caff 55%,#a58aff);
+  }
+  .hero-grid > .profile:hover { box-shadow: 0 25px 58px rgba(0,0,0,.35), 0 0 40px rgba(161,126,255,.55),0 0 60px rgba(98,177,255,.28); }
+  .hero-grid > .profile img { backface-visibility:hidden; }
+  .rf-reveal { opacity:0; translate:0 22px; transition: opacity .7s ease, translate .7s cubic-bezier(.2,.75,.25,1); }
+  .rf-reveal.rf-visible { opacity:1; translate:0 0; }
+  @media (prefers-reduced-motion: reduce) {
+    .hero-grid > .profile { transform:none !important; will-change:auto; }
+    .rf-reveal { opacity:1; translate:none; transition:none; }
+  }
+
   </style>
-  <link rel="stylesheet" href="portfolio-effects.css">
-  <script defer src="portfolio-effects.js"></script>
 </head>
 <body>
 
@@ -475,6 +500,77 @@
         });
       });
     });
+  </script>
+
+
+  <script>
+  /* Self-contained mouse + scroll 3D portrait, no external file dependency. */
+  (() => {
+    const picture = document.querySelector('.hero-grid > .profile');
+    if (!picture) return;
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const fine = window.matchMedia('(hover: hover) and (pointer: fine)');
+    const target = { rx:0, ry:0, x:0, y:0, scroll:0 };
+    const current = { rx:0, ry:0, x:0, y:0, scroll:0 };
+    let frame = 0;
+    const clamp=(value,min,max)=>Math.min(max,Math.max(min,value));
+    function tick() {
+      frame=0;
+      if (reduce.matches) { picture.style.transform='none'; return; }
+      let active=false;
+      Object.keys(current).forEach(key=>{
+        const diff=target[key]-current[key];
+        if (Math.abs(diff)>0.015) { current[key]+=diff*.13; active=true; }
+        else current[key]=target[key];
+      });
+      picture.style.transform = `perspective(1050px) translate3d(${current.x.toFixed(2)}px, ${(current.y+current.scroll).toFixed(2)}px, 0) rotateX(${current.rx.toFixed(2)}deg) rotateY(${current.ry.toFixed(2)}deg)`;
+      if (active) request();
+    }
+    function request(){ if (!frame) frame=requestAnimationFrame(tick); }
+    function move(e){
+      if (!fine.matches || reduce.matches) return;
+      // Moving anywhere in the viewport moves the portrait, including mouse over text.
+      const nx=clamp((e.clientX/window.innerWidth-.5)*2,-1,1);
+      const ny=clamp((e.clientY/window.innerHeight-.5)*2,-1,1);
+      target.ry=nx*12; target.rx=-ny*9;
+      target.x=nx*17; target.y=ny*12;
+      request();
+    }
+    function reset(){ target.rx=target.ry=target.x=target.y=0; request(); }
+    function scroll(){
+      if (reduce.matches) return;
+      const hero=document.querySelector('.hero');
+      const distance=hero?hero.offsetHeight:650;
+      target.scroll=clamp(window.scrollY/distance*34,0,34);
+      request();
+    }
+    window.addEventListener('pointermove',move,{passive:true});
+    document.addEventListener('mouseleave',reset);
+    window.addEventListener('blur',reset);
+    window.addEventListener('scroll',scroll,{passive:true});
+    window.addEventListener('resize',scroll,{passive:true});
+    reduce.addEventListener?.('change',()=>{ reset(); scroll(); request(); });
+    scroll(); request();
+
+    if ('IntersectionObserver' in window && !reduce.matches) {
+      const items=document.querySelectorAll('#projects .section-heading, #projects .project, #services .section-heading, #services .service, #about .container, #contact .contact');
+      const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{
+        if(entry.isIntersecting){ entry.target.classList.add('rf-visible'); observer.unobserve(entry.target); }
+      }),{threshold:.08,rootMargin:'0px 0px -15px 0px'});
+      items.forEach(item=>{item.classList.add('rf-reveal'); observer.observe(item);});
+    }
+    document.querySelectorAll('.project video').forEach(video=>{
+      const card=video.closest('.project');
+      let auto=false;
+      card?.addEventListener('mouseenter',()=>{
+        if(!fine.matches || reduce.matches || !video.paused)return;
+        video.muted=true; auto=true; video.play().catch(()=>auto=false);
+      });
+      card?.addEventListener('mouseleave',()=>{
+        if(auto){video.pause();video.currentTime=0;auto=false;}
+      });
+    });
+  })();
   </script>
 
 </body>

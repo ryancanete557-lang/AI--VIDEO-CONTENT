@@ -384,6 +384,29 @@ nav {position:relative;z-index:10}
  .project:hover,.service:hover,.button-primary:hover {transform:none!important}
 }
 
+
+/* ÉCLATÉ SKIN: featured project, scoped to its own card */
+.project-featured {
+  border-color: rgba(204,158,236,.52);
+  background: linear-gradient(135deg, rgba(58,30,77,.55), rgba(20,20,33,.96) 62%);
+  box-shadow: 0 15px 40px rgba(12,8,25,.20);
+}
+.project-featured video {
+  aspect-ratio: 16 / 9;
+  object-fit: contain;
+  background: radial-gradient(circle at center, #4e354e, #100d18 72%);
+}
+.project-featured .featured-kicker {
+  display: inline-block;
+  color: #e1bbf5;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.8px;
+  margin-bottom: 11px;
+}
+.project-featured .project-info h3 { color: #faf5ff; }
+.project-featured:hover { border-color: rgba(225,184,248,.8); }
+
   </style>
 </head>
 <body>
@@ -433,6 +456,20 @@ nav {position:relative;z-index:10}
       </div>
 
       <div class="projects">
+
+        <!-- Featured concept commercial: fictional brand, real editing sample -->
+        <article class="project project-featured">
+          <video controls preload="metadata" playsinline poster="ECLATE_SKIN_poster.jpg" aria-label="Watch Éclaté Skin Glass Glow Elixir spec commercial">
+            <source src="ECLATE_SKIN_Glass_Glow_Elixir.mp4" type="video/mp4">
+            Your browser does not support video playback.
+          </video>
+          <div class="project-info">
+            <span class="featured-kicker">FEATURED PROJECT · BEAUTY SPEC AD</span>
+            <h3>ÉCLATÉ SKIN — Glass Glow Elixir</h3>
+            <p>A 20-second luxury skincare concept commercial featuring cinematic product close-ups, luminous serum textures, elegant motion, and a polished brand reveal. Fictional brand created for portfolio demonstration.</p>
+            <span class="tag">AI Beauty Commercial</span> <span class="tag">Spec Project</span>
+          </div>
+        </article>
 
         <article class="project">
           <video controls preload="metadata" playsinline>
